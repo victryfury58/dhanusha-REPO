@@ -1,0 +1,128 @@
+{
+  "project_context": {
+    "agency_name": "Dhanusha Production",
+    "tagline": "Your Complete Content Creation Partner",
+    "contact": {
+      "email": "dhanusha.production@gmail.com",
+      "phone": "8287738890"
+    },
+    "vibe": "Dark cinematic, high-end, mysterious but user-friendly and trustworthy",
+    "theme": "dark"
+  },
+  "typography": {
+    "strategy": "The 'Cinematic Blockbuster' Pairing",
+    "fonts_import": "@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap');",
+    "primary_heading": {
+      "family": "'Oswald', sans-serif",
+      "usage": "H1, H2, large numbers, and marquee text. Must be UPPERCASE.",
+      "weight": "700",
+      "tracking": "tracking-tighter",
+      "line_height": "leading-[0.9]"
+    },
+    "body_font": {
+      "family": "'Manrope', sans-serif",
+      "usage": "Paragraphs, buttons, small labels, UI elements.",
+      "weight": "400/500",
+      "tracking": "tracking-normal",
+      "line_height": "leading-relaxed"
+    }
+  },
+  "colors": {
+    "archetype": "LUXURY (Premium, Depth, Mystery) mixed with HIGH-CONTRAST",
+    "palette": {
+      "background_base": "#050505",
+      "background_surface": "#0F0F0F",
+      "primary_brand": "#F5B841",
+      "primary_glow": "rgba(245, 184, 65, 0.15)",
+      "text_primary": "#F5F5F5",
+      "text_secondary": "#A3A3A3",
+      "border_subtle": "rgba(255, 255, 255, 0.08)",
+      "border_active": "rgba(245, 184, 65, 0.5)"
+    },
+    "tailwind_vars": {
+      "background": "0 0% 2%",
+      "foreground": "0 0% 96%",
+      "primary": "40 91% 61%",
+      "primary-foreground": "0 0% 10%",
+      "muted": "0 0% 10%",
+      "muted-foreground": "0 0% 64%",
+      "border": "0 0% 12%"
+    }
+  },
+  "visual_enhancers": {
+    "noise_texture": "MANDATORY: Add a fixed, pointer-events-none div covering the viewport with a subtle SVG noise/grain background to give a filmic, cinematic quality.",
+    "glassmorphism": "Use for the sticky header and floating UI cards. `bg-black/50 backdrop-blur-xl border border-white/10`. NEVER use fully transparent headers.",
+    "spotlight_effect": "Use radial gradients in the background (e.g. `bg-[radial-gradient(circle_at_center,rgba(245,184,65,0.08)_0%,transparent_50%)]`) to spotlight key sections like the hero and forms.",
+    "borders": "Use 1px subtle white/10 borders for containers. For active/hover states, transition to the amber brand color."
+  },
+  "layouts_and_grids": {
+    "hero_section": "100vh Sticky/Fixed layout. The text must use a masked line-by-line reveal on load. As the user scrolls, use framer-motion `useScroll` and `useTransform` to scale and translate absolute-positioned images (camera lens, microphone, BTS photo) outward from the center, simulating a 3D unpacking sequence.",
+    "thumbnail_gallery": "Horizontal side-scrolling section. Use a wide flex container with `useScroll` mapped to a horizontal translation (`x`). Clip the frames aggressively.",
+    "podcast_teasers": "Render a sleek Phone Mockup frame. Inside it, put the teaser video. Implement a framer-motion `drag='x'` interaction to allow users to 'right swipe' through different podcast teasers.",
+    "services_grid": "Bento Grid Protocol: High-density asymmetric grid (e.g., `grid-cols-1 md:grid-cols-3 lg:grid-cols-4`). 13 services means varying spans. On hover, cards should slightly lift and their border should glow with the brand color.",
+    "manifesto_chapters": "Large typographic numbers (Oswald) overlapping the text. High contrast, massive negative space.",
+    "marquee": "Use `react-fast-marquee`. Font: Oswald, completely uppercase, hollow (text stroke) or solid amber. Very slow speed."
+  },
+  "motion": {
+    "libraries": [
+      "framer-motion",
+      "@studio-freight/react-lenis (MANDATORY for smooth scroll)",
+      "lucide-react (for icons)"
+    ],
+    "scroll_reveal": "Wrap major sections in motion.div elements with `initial={{ opacity: 0, y: 40 }}` and `whileInView={{ opacity: 1, y: 0 }}`. Use `viewport={{ once: true, margin: '-100px' }}`.",
+    "hover_states": "All buttons and interactive cards must scale up slightly (`scale: 1.02`) and brighten on hover."
+  },
+  "components": {
+    "lead_capture_form": "Use Shadcn UI Input, Textarea, Button. Override default styles to match cinematic theme: `bg-white/5`, `border-white/10`, focus states should use `ring-primary`. Layout: Split screen - massive typography on the left, sleek form on the right.",
+    "interactive_cards": "For the services. Custom HTML/Tailwind divs wrapped in framer-motion for the hover logic.",
+    "video_player": "For the teaser. Autoplay, muted, loop inside the phone mockup container."
+  },
+  "image_urls": {
+    "logo": {
+      "url": "https://customer-assets-jai6qajn.emergentagent.net/job_ddfc4267-4fe2-454f-a7f0-f95dbd4aa049/artifacts/tmkq3yhp_unnamed.jpg",
+      "usage": "Navbar and Footer brand identifier."
+    },
+    "thumbnail_1_h": {
+      "url": "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/ekiznxzx_98.png",
+      "usage": "Horizontal scrolling gallery."
+    },
+    "thumbnail_2_h": {
+      "url": "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/qwj32ney_58.png",
+      "usage": "Horizontal scrolling gallery."
+    },
+    "thumbnail_3_v": {
+      "url": "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/505varu7_2.png",
+      "usage": "Vertical asset for gallery or bento grid."
+    },
+    "teaser_video": {
+      "url": "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/g982fezv_AQMOuV83Rpo8XoI9AbFyBmKR8wXmlmPAWIo29cycOUwv57mVaamxdCwxHsfkdI4LyXncGbQqGnVjjKHmFquZqXqUjLt2c9fZ.mp4",
+      "usage": "Inside the swipeable phone mockup."
+    },
+    "bts_photo": {
+      "url": "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/73v152yv_728035463_18103608562992785_8445229392986515040_n.webp",
+      "usage": "Behind the scenes / Manifesto section or Hero unpacking parallax."
+    },
+    "cinematic_lens": {
+      "url": "https://images.unsplash.com/photo-1580852300513-9b50125bf293?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwzfHxjYW1lcmElMjBsZW5zJTIwZGFyayUyMGNpbmVtYXRpY3xlbnwwfHx8fDE3ODU0MjE0MjB8MA&ixlib=rb-4.1.0&q=85",
+      "usage": "Abstract floating asset for the 3D-feel Hero unpacking sequence."
+    },
+    "cinematic_mic": {
+      "url": "https://images.unsplash.com/photo-1679411156707-9e97efa60381?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwyfHxwb2RjYXN0JTIwbWljcm9waG9uZSUyMGRhcmslMjBjaW5lbWF0aWN8ZW58MHx8fHwxNzg1NDIxNDIwfDA&ixlib=rb-4.1.0&q=85",
+      "usage": "Abstract floating asset for the 3D-feel Hero unpacking sequence."
+    }
+  },
+  "accessibility": {
+    "contrast": "Ensure APCA contrast standards. Dark grey text on black is forbidden; use #A3A3A3 or lighter.",
+    "reduced_motion": "Use `useReducedMotion` from framer-motion to disable the 3D unpack sequence and scroll-jacking for users with vestibular disorders.",
+    "test_ids": "Every button, form input, and swipeable card MUST have a `data-testid` (e.g., `data-testid='hero-cta'`, `data-testid='contact-submit'`)."
+  },
+  "instructions_to_main_agent": {
+    "1": "BUILD .js FILES, NOT .tsx. Provide the exact CSS variables and custom classes.",
+    "2": "NO GENERIC SLOP. The design must look like a high-end film production agency. Spacing should be extremely generous (py-24, py-32).",
+    "3": "For the Hero '3D unpack' requirement: Since we don't have literal 3D models, you MUST simulate this by using layered absolute `motion.div`s containing the mic, lens, and BTS images. Map their `scale`, `y`, and `x` values to `useScroll` so they 'fly out' from the center as the user scrolls down, revealing the UI beneath.",
+    "4": "Never use a fully transparent header; use backdrop-blur-xl and bg-black/50.",
+    "5": "Do not leave placeholder links or text. Construct the 13 services logically: Outdoor Podcast Production, Multi-Camera Setup, Video Editing, etc.",
+    "6": "Use Radix/Shadcn primitives for form elements to ensure accessibility, but heavily style them with Tailwind to fit the cinematic theme."
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": "Avoid generic layouts and simplistic gradients. Create depth through layered design elements with z-index hierarchy. Use glass-morphism effects with backdrop filters. DO NOT apply universal transitions (e.g., `transition: all`). DO NOT center align the app container. Use sonner for toasts. Do not use AI emojis."
+}
