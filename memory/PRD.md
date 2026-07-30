@@ -1,0 +1,30 @@
+# Dhanusha Production — Cinematic 3D Animated Marketing Site
+
+## Original Problem Statement
+3D animated website for "Dhanusha Production – Your Complete Content Creation Partner". Hero with a bag opening / camera equipment unpacking for a podcast shoot, interactive side-scrolling thumbnails, podcast teasers as phones with right-swipe, and animated service cards for 13 services.
+
+## Stack
+- Frontend: React 19, Tailwind, framer-motion, lenis (smooth scroll), react-fast-marquee, lucide-react, shadcn/ui, sonner
+- Backend: FastAPI + MongoDB (lead capture)
+
+## User Choices
+- Framer motion, dark cinematic but attractive & user-friendly
+- Gold (#F5B841) on near-black; Oswald (display) + Manrope (body)
+- Contact: dhanusha.production@gmail.com, 8287738890, IG @dhanusha_production
+- Real assets: logo, 3 thumbnails, teaser video, BTS photo
+
+## Implemented (2026-07-30)
+- Hero: masked line-by-line headline reveal + scroll-driven "unpack" of mic/lens/BTS/thumbnail from a central glow
+- Slow editorial marquee (text-stroke gold)
+- Horizontal side-scrolling thumbnail gallery (scroll-jacked)
+- Podcast teasers: draggable phone mockup deck (right-swipe) playing teaser video
+- Services: 13 interactive bento cards with hover lift + glow
+- Studio: stats + numbered manifesto chapters + BTS image
+- Contact: lead form -> POST /api/leads (verified saving to Mongo); footer with socials
+- Backend: POST/GET /api/leads (tested via curl)
+
+## Backlog / Next
+- P1: Admin dashboard to view captured leads
+- P1: Email notification on new lead (Resend)
+- P2: Real Instagram feed embed / portfolio detail pages
+- P2: WhatsApp click-to-chat button
