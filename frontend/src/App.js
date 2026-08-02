@@ -17,7 +17,7 @@ function App() {
             <Route
               path="/"
               element={
-                <ReactLenis root options={{ lerp: 0.09, smoothWheel: true }}>
+                <ReactLenis root options={{ lerp: 0.09, smoothWheel: true, anchors: { offset: -64 } }}>
                   <Home />
                 </ReactLenis>
               }

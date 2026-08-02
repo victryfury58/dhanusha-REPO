@@ -36,3 +36,10 @@
 - Backend: SiteSettings singleton + GET/PUT /api/settings.
 - /admin page (open access) with a toggle to show/hide Testimonials so no blank spaces appear. Discreet "Site Controls" link in footer.
 - Tested: 100% backend + frontend (iteration_1.json).
+
+## Update (Vintage film-poster redesign)
+- Full art-direction overhaul to a "vintage film-production poster" theme in brand gold (#F5B841) on near-black, inspired by a film-workshop reference but using Dhanusha's own content/assets.
+- Design system (FilmKit.jsx): Anton display font, film-strip sprocket side borders, corner "slate" labels (TAKE/REEL/SCENE), clapperboard striped card tops, marker highlight/underline, sticker tags, sparkles, doodle arrows, grain overlay.
+- New tightly-packed section flow (no scroll gaps): Hero(gold slate card) -> credibility marquee -> Personas SCENE cards -> Reel Wall video grid -> Thumbnails grid -> Client YouTube channels + featured embed -> 13 Services clapper cards -> What You Get -> Before/After Comparison table -> Testimonials(toggle) -> FAQ -> Book-a-Shoot form(gold call-sheet) -> Footer.
+- Lenis `anchors` enabled so navbar/CTA links smooth-scroll.
+- Tested 100% backend + frontend (iteration_2.json). Awaiting more user assets to expand reels/thumbnails/personas.
