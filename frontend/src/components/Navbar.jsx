@@ -4,10 +4,10 @@ import { Menu, X } from "lucide-react";
 import { ASSETS, CONTACT } from "@/data";
 
 const LINKS = [
-  { label: "Work", href: "#work" },
-  { label: "Teasers", href: "#teasers" },
+  { label: "Reels", href: "#reels" },
+  { label: "Clients", href: "#clients" },
   { label: "Services", href: "#services" },
-  { label: "Studio", href: "#studio" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -57,7 +57,7 @@ export const Navbar = () => {
           data-testid="navbar-cta"
           className="hidden md:inline-flex items-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:brightness-110 hover:scale-[1.03] transition-transform duration-200"
         >
-          Start a Project
+          Book a Shoot
         </a>
 
         <button

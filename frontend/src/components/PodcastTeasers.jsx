@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, Hand } from "lucide-react";
-import { ASSETS, TEASERS } from "@/data";
+import { ASSETS, REELS, TEASERS } from "@/data";
+
+const VIDEOS = [REELS[0], REELS[1], REELS[2], ASSETS.teaser];
 
 export const PodcastTeasers = () => {
   const [index, setIndex] = useState(0);
   const current = TEASERS[index % TEASERS.length];
+  const video = VIDEOS[index % VIDEOS.length];
 
   const next = () => setIndex((i) => (i + 1) % TEASERS.length);
 
@@ -64,7 +67,7 @@ export const PodcastTeasers = () => {
               <div className="absolute top-3 left-1/2 -translate-x-1/2 h-5 w-24 rounded-full bg-black z-20 ring-1 ring-white/10" />
               <div className="relative h-full w-full overflow-hidden rounded-[2rem] bg-[#0a0a0a]">
                 <video
-                  src={ASSETS.teaser}
+                  src={video}
                   autoPlay
                   muted
                   loop

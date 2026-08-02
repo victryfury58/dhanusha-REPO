@@ -44,10 +44,10 @@ export const Contact = () => {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-xs tracking-[0.35em] text-gold uppercase mb-4">Let&apos;s Talk</p>
+          <p className="text-xs tracking-[0.35em] text-gold uppercase mb-4">Book Your Shoot</p>
           <h2 className="heading-xl text-5xl md:text-7xl">Ready To<br />Press Record?</h2>
           <p className="text-muted-foreground text-base md:text-lg mt-6 max-w-md leading-relaxed">
-            Tell us about your channel, brand or next episode. We&apos;ll craft a plan that fits.
+            Tell us about your channel, brand or next episode. We shoot anywhere across {CONTACT.region} and reply within 24 hours.
           </p>
 
           <div className="mt-10 space-y-4">

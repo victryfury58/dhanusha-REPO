@@ -44,6 +44,14 @@ class LeadCreate(BaseModel):
     message: str = Field(..., min_length=1, max_length=3000)
 
 
+class SiteSettings(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    show_testimonials: bool = False
+
+
+DEFAULT_SETTINGS = {"_id": "site", "show_testimonials": False}
+
+
 # ---------------- Routes ----------------
 @api_router.get("/")
 async def root():
@@ -62,6 +70,25 @@ async def create_lead(payload: LeadCreate):
 async def list_leads():
     docs = await db.leads.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
     return [Lead(**d) for d in docs]
+
+
+@api_router.get("/settings", response_model=SiteSettings)
+async def get_settings():
+    doc = await db.settings.find_one({"_id": "site"})
+    if not doc:
+        await db.settings.insert_one(dict(DEFAULT_SETTINGS))
+        return SiteSettings()
+    return SiteSettings(**doc)
+
+
+@api_router.put("/settings", response_model=SiteSettings)
+async def update_settings(payload: SiteSettings):
+    await db.settings.update_one(
+        {"_id": "site"},
+        {"$set": payload.model_dump()},
+        upsert=True,
+    )
+    return payload
 
 
 app.include_router(api_router)

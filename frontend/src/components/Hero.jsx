@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, Play } from "lucide-react";
-import { ASSETS } from "@/data";
+import { ASSETS, HERO_CHIPS, CONTACT } from "@/data";
 
 const line = {
   hidden: { y: "110%" },
@@ -98,18 +98,42 @@ export const Hero = () => {
             <MaskLine i={1}><span className="text-gold">Entire Studio.</span></MaskLine>
             <MaskLine i={2}>You Just Press Record.</MaskLine>
           </h1>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
+            className="mt-7 text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed"
+          >
+            Outdoor & multi-camera podcast production, editing, reels and thumbnails — we bring the full setup and crew to your location, anywhere in {CONTACT.region}.
+          </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <a href="#contact" data-testid="hero-cta" className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground hover:scale-[1.04] transition-transform duration-200">
               Book a Shoot <ArrowDownRight size={18} className="group-hover:rotate-45 transition-transform" />
             </a>
-            <a href="#teasers" data-testid="hero-secondary" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-3.5 text-sm font-medium text-foreground/90 hover:border-gold hover:text-gold transition-colors">
-              <Play size={16} /> Watch Teasers
+            <a href="#reels" data-testid="hero-secondary" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-3.5 text-sm font-medium text-foreground/90 hover:border-gold hover:text-gold transition-colors">
+              <Play size={16} /> Watch Our Work
             </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.3, duration: 0.6 }}
+            className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 max-w-2xl mx-auto"
+            data-testid="hero-chips"
+          >
+            {HERO_CHIPS.map((c) => (
+              <div key={c.label} className="flex items-center gap-2 text-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                <span className="text-muted-foreground">{c.label}</span>
+                <span className="font-semibold text-foreground">{c.value}</span>
+              </div>
+            ))}
           </motion.div>
         </motion.div>
 

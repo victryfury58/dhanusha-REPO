@@ -5,6 +5,7 @@ export const CONTACT = {
   phone: "8287738890",
   phoneDisplay: "+91 82877 38890",
   instagram: "https://www.instagram.com/dhanusha_production",
+  region: "Delhi NCR",
 };
 
 export const ASSETS = {
@@ -17,6 +18,22 @@ export const ASSETS = {
   lens: "https://images.unsplash.com/photo-1580852300513-9b50125bf293?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwzfHxjYW1lcmElMjBsZW5zJTIwZGFyayUyMGNpbmVtYXRpY3xlbnwwfHx8fDE3ODU0MjE0MjB8MA&ixlib=rb-4.1.0&q=85",
   mic: "https://images.unsplash.com/photo-1679411156707-9e97efa60381?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwyfHxwb2RjYXN0JTIwbWljcm9waG9uZSUyMGRhcmslMjBjaW5lbWF0aWN8ZW58MHx8fHwxNzg1NDIxNDIwfDA&ixlib=rb-4.1.0&q=85",
 };
+
+// Uploaded reel / teaser videos
+export const REELS = [
+  "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/ou49ja78_AQMF1nmO0Edl5vzGAzjqSiV0icq3ce1w3csJzPIfMlcM-evIGnOx5HlBu90wXf8melCbZ7RL23pFOnRM6T6y2VjZFxivFXMS.mp4",
+  "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/67trtnes_AQMiYrcEYcLL5xwvDYtDxk9-PYlQZm1jN7ACNrscLOHfFjNsGYdM7CewMzDbT7nQHmk2Pi6GXyZCxHFpVrChuMVw2oWxAt-D.mp4",
+  "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/ns93i0cn_AQMtLYEDyvouoTGZugnb8z9hMFEM5tvYYdXaQBwgshvmcxpc0afJ3BLTx7w6hqXGp9QMEglgSlhrKzR_4C8F4g2fINVeBsbm.mp4",
+  "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/e7uz7dsd_AQNXoO7j5cr3moD7ZFKnr--lqCTVCEbVR5gIeQSibIXb262-0_igMBAzDvuH4Ktymone_Ol9L_sdzA4vsUBybnadD80Y_1Wv.mp4",
+  "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/ivg94qrq_AQOlIBb2abv3vsk79QKw0xFxHocVQETQ-5SVqtUWFdIE1DaM1HptXL1V92MVu_Qh_lbMTROZV_9DR5Uo5Ae4PU-SjHbcGHap.mp4",
+];
+
+export const HERO_CHIPS = [
+  { label: "Shoots across", value: "Delhi NCR" },
+  { label: "Setup", value: "Multi-Camera" },
+  { label: "On-ground", value: "Full Crew + Lighting" },
+  { label: "Delivery", value: "Edit + Reels + SEO" },
+];
 
 export const SERVICES = [
   { title: "Outdoor Podcast Production", icon: "Tent", desc: "Cinematic on-location podcast shoots with full crew, lighting and sound." },
@@ -45,6 +62,57 @@ export const STATS = [
   { value: "40M+", label: "Views Generated" },
   { value: "80+", label: "Creators Served" },
   { value: "13", label: "Services Under One Roof" },
+];
+
+// "This is for you if you're a..." persona grid
+export const PERSONAS = [
+  { title: "Podcasters & Hosts", icon: "Mic", desc: "Turn up and talk — we handle cameras, sound, lighting and the edit." },
+  { title: "YouTubers & Creators", icon: "Youtube", desc: "Long-form, reels and thumbnails engineered to grow your channel." },
+  { title: "Coaches & Educators", icon: "GraduationCap", desc: "Authority-building content that turns viewers into students." },
+  { title: "Founders & Brands", icon: "Rocket", desc: "Founder-led shows and brand films that build trust at scale." },
+  { title: "Spiritual & Devotional", icon: "Sparkles", desc: "Emotive storytelling and reels that travel far and resonate deep." },
+  { title: "Events & Corporates", icon: "Building2", desc: "Commercials, aftermovies and corporate films, shot end-to-end." },
+];
+
+// "What you get" deliverables
+export const TAKEAWAYS = [
+  { title: "A Ready-To-Shoot Studio, On Location", desc: "Multi-cam rig, lighting, mics and a calm crew arrive and set up anywhere in Delhi NCR." },
+  { title: "Full Episode, Edited To Retain", desc: "Color, sound and pacing tuned so viewers actually watch to the end." },
+  { title: "Reels & Shorts From Every Episode", desc: "5–10 scroll-stopping cuts per shoot, formatted for every platform." },
+  { title: "Click-Magnet Thumbnails", desc: "Tested designs built to push your click-through rate up." },
+  { title: "SEO That Gets You Found", desc: "Titles, tags and descriptions optimised for YouTube search." },
+  { title: "One Partner For Everything", desc: "From branding to motion graphics — thirteen services under one roof." },
+];
+
+// Client YouTube channels (social proof)
+export const CHANNELS = [
+  { name: "Podcast With Anchal", handle: "@podcastwithanchal", url: "https://youtube.com/@podcastwithanchal" },
+  { name: "The Asad Talk", handle: "@theasadtalk", url: "https://youtube.com/@theasadtalk" },
+  { name: "Abhishek Kar", handle: "@abhishekkar", url: "https://youtube.com/@abhishekkar" },
+  { name: "Naagru Vikaas", handle: "@naagruvikaas6474", url: "https://youtube.com/@naagruvikaas6474" },
+  { name: "Podcast By Dhananjay", handle: "@podcastbydhananjay", url: "https://youtube.com/@podcastbydhananjay" },
+  { name: "FYI by Aditya Goel", handle: "@fyibyadityagoel", url: "https://youtube.com/@fyibyadityagoel" },
+  { name: "Jitendra Vaswani", handle: "@jitendravaswani", url: "https://youtube.com/@jitendravaswani" },
+  { name: "The Yogesh Pranav Show", handle: "@theyogeshpranavshow", url: "https://youtube.com/@theyogeshpranavshow" },
+  { name: "TED Shark Labs", handle: "@tedsharklabs", url: "https://youtube.com/@tedsharklabs" },
+];
+
+// Featured YouTube video (direct link provided)
+export const FEATURED_VIDEO_ID = "ZAqmEKc_7CA";
+
+// Placeholder testimonials (editable, hidden by default via admin toggle)
+export const TESTIMONIALS = [
+  { quote: "Dhanusha turned our raw conversations into a channel that actually grows. The crew is calm, fast and genuinely creative.", name: "Client Name", role: "Podcast Host" },
+  { quote: "Booked a shoot, showed up, spoke — and got a full episode plus ten reels. Effortless and premium end to end.", name: "Client Name", role: "Founder" },
+  { quote: "The thumbnails and edits pushed our watch-time to a level we couldn't hit on our own. Highly recommend.", name: "Client Name", role: "Educator" },
+];
+
+export const FAQS = [
+  { q: "Where do you shoot?", a: "We shoot anywhere across Delhi NCR — your office, home, a studio or an outdoor location. We bring the entire setup to you." },
+  { q: "What's included in a podcast shoot?", a: "Multi-camera setup, professional lighting, microphones, a full crew on the day, and post-production including the edited episode, reels and thumbnails." },
+  { q: "How soon can I book?", a: "Reach out with your preferred date and we'll confirm availability, usually within 24 hours." },
+  { q: "Do you only do podcasts?", a: "No — we cover 13 services including reels, thumbnails, branding, motion graphics, SEO and corporate/commercial video production." },
+  { q: "Will I get short-form content too?", a: "Yes. Every shoot can include 5–10 reels/shorts cut from the episode, formatted for YouTube, Instagram and other platforms." },
 ];
 
 export const MANIFESTO = [
