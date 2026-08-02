@@ -31,8 +31,8 @@ export const Thumbnails = () => {
               <motion.div whileHover={{ y: -6 }} data-testid={`thumb-${i}`}
                           className="relative rounded-md overflow-hidden ring-1 ring-gold/20 bg-black group">
                 <CornerBrackets color="rgba(245,184,65,0.4)" />
-                <div className="aspect-video overflow-hidden">
-                  <img src={t.src} alt={`${t.tag} thumbnail`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="aspect-video overflow-hidden flex items-center justify-center bg-black">
+                  <img src={t.src} alt={`${t.tag} thumbnail`} className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <span className="absolute bottom-2 left-2 font-poster uppercase text-[10px] tracking-[0.2em] bg-[#050505]/80 text-gold px-2 py-1">{t.tag}</span>
               </motion.div>

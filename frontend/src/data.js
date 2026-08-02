@@ -36,7 +36,7 @@ export const HERO_CHIPS = [
 ];
 
 export const SERVICES = [
-  { title: "Outdoor Podcast Production", icon: "Tent", desc: "Cinematic on-location podcast shoots with full crew, lighting and sound." },
+  { title: "Outdoor Shoots — All Types", icon: "Tent", desc: "On-location podcasts, interviews, brand & event shoots with full crew, lighting and sound." },
   { title: "Multi-Camera Podcast Setup", icon: "Video", desc: "Synced multi-angle rigs for dynamic, broadcast-grade conversations." },
   { title: "Professional Video Editing", icon: "Clapperboard", desc: "Story-first edits, color grade and sound design that hold attention." },
   { title: "YouTube & Reels Editing", icon: "Youtube", desc: "Platform-native cuts engineered for watch-time and retention." },
