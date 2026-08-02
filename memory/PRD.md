@@ -28,3 +28,11 @@
 - P1: Email notification on new lead (Resend)
 - P2: Real Instagram feed embed / portfolio detail pages
 - P2: WhatsApp click-to-chat button
+
+## Update (Landing-page rebuild, funnel style)
+- Rebuilt homepage as a conversion funnel (inspired by devangsingh workshop page) keeping gold/dark theme.
+- New sections: Persona grid ("This is for you if…"), Reel Wall (5 uploaded videos, hover-to-play), Client YouTube channels (9 cards + featured embed ZAqmEKc_7CA), "What You Get" takeaways, FAQ accordion, Testimonials (placeholder, hidden by default).
+- "Book a Shoot" CTAs throughout; "anywhere in Delhi NCR" messaging; NO pricing section.
+- Backend: SiteSettings singleton + GET/PUT /api/settings.
+- /admin page (open access) with a toggle to show/hide Testimonials so no blank spaces appear. Discreet "Site Controls" link in footer.
+- Tested: 100% backend + frontend (iteration_1.json).
