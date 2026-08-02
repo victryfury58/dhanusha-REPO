@@ -64,14 +64,29 @@ export const STATS = [
   { value: "13", label: "Services Under One Roof" },
 ];
 
-// "This is for you if you're a..." persona grid
+// "This is for you if you're a..." persona grid (SCENE cards)
+const PERSONA_IMG = {
+  podcast: "https://images.unsplash.com/photo-1589903308904-1010c2294adc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzZ8MHwxfHNlYXJjaHwyfHxwb2RjYXN0JTIwc3R1ZGlvJTIwbWljcm9waG9uZSUyMGRhcmslMjBzZXR1cHxlbnwwfHx8fDE3ODU2NjM1NDh8MA&ixlib=rb-4.1.0&q=85",
+  edit: "https://images.pexels.com/photos/29505140/pexels-photo-29505140.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  crew: "https://images.unsplash.com/photo-1632187981988-40f3cbaeef5e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHwyfHxmaWxtJTIwcHJvZHVjdGlvbiUyMGNyZXclMjBiZWhpbmQlMjB0aGUlMjBzY2VuZXN8ZW58MHx8fHwxNzg1NjYzNTQ4fDA&ixlib=rb-4.1.0&q=85",
+};
+
 export const PERSONAS = [
-  { title: "Podcasters & Hosts", icon: "Mic", desc: "Turn up and talk — we handle cameras, sound, lighting and the edit." },
-  { title: "YouTubers & Creators", icon: "Youtube", desc: "Long-form, reels and thumbnails engineered to grow your channel." },
-  { title: "Coaches & Educators", icon: "GraduationCap", desc: "Authority-building content that turns viewers into students." },
-  { title: "Founders & Brands", icon: "Rocket", desc: "Founder-led shows and brand films that build trust at scale." },
-  { title: "Spiritual & Devotional", icon: "Sparkles", desc: "Emotive storytelling and reels that travel far and resonate deep." },
-  { title: "Events & Corporates", icon: "Building2", desc: "Commercials, aftermovies and corporate films, shot end-to-end." },
+  { title: "Podcasters & Hosts", icon: "Mic", img: PERSONA_IMG.podcast, desc: "Turn up and talk — we handle cameras, sound, lighting and the edit." },
+  { title: "YouTubers & Creators", icon: "Youtube", img: PERSONA_IMG.edit, desc: "Long-form, reels and thumbnails engineered to grow your channel." },
+  { title: "Coaches & Educators", icon: "GraduationCap", img: PERSONA_IMG.crew, desc: "Authority-building content that turns viewers into students." },
+  { title: "Founders & Brands", icon: "Rocket", img: PERSONA_IMG.podcast, desc: "Founder-led shows and brand films that build trust at scale." },
+  { title: "Spiritual & Devotional", icon: "Sparkles", img: PERSONA_IMG.edit, desc: "Emotive storytelling and reels that travel far and resonate deep." },
+  { title: "Events & Corporates", icon: "Building2", img: PERSONA_IMG.crew, desc: "Commercials, aftermovies and corporate films, shot end-to-end." },
+];
+
+// Before / After comparison (DIY vs Dhanusha)
+export const COMPARISON = [
+  { before: "Juggling camera, audio, edit & clients alone", after: "A full crew arrives, sets up and rolls — you just talk" },
+  { before: "One raw file that never becomes content", after: "An edited episode plus 5–10 reels from every shoot" },
+  { before: "Guessing thumbnails and titles", after: "CTR-tested thumbnails and YouTube-SEO'd titles" },
+  { before: "Chasing five freelancers for one video", after: "Thirteen services under one roof, one point of contact" },
+  { before: "Inconsistent uploads, stalling growth", after: "A repeatable system that keeps your channel shipping" },
 ];
 
 // "What you get" deliverables

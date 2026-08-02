@@ -1,47 +1,53 @@
 import { motion } from "framer-motion";
 import { Mic, Youtube, GraduationCap, Rocket, Sparkles, Building2 } from "lucide-react";
 import { PERSONAS } from "@/data";
+import { SlateLabel, CornerBrackets, Reveal, UL, Cta } from "@/components/FilmKit";
 
 const ICONS = { Mic, Youtube, GraduationCap, Rocket, Sparkles, Building2 };
 
 export const Personas = () => {
   return (
-    <section id="who" className="relative py-28 md:py-36 bg-background" data-testid="personas-section">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mb-16"
-        >
-          <p className="text-xs tracking-[0.35em] text-gold uppercase mb-4">Who We Help</p>
-          <h2 className="heading-xl text-4xl md:text-6xl">This Is For You<br /><span className="text-gold">If You're A…</span></h2>
-        </motion.div>
+    <section id="who" className="relative kraft py-16 md:py-20 overflow-hidden" data-testid="personas-section">
+      <SlateLabel side="left" tone="gold" testid="who-slate-left">Reel 02</SlateLabel>
+      <SlateLabel side="right" tone="gold" testid="who-slate-right">Scene · Casting</SlateLabel>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="max-w-6xl mx-auto px-6 md:px-10">
+        <Reveal className="text-center mb-12">
+          <h2 className="font-poster uppercase text-4xl sm:text-5xl md:text-6xl leading-tight">
+            This Is For You <br /> If You&apos;re A <UL>Creator</UL> Who…
+          </h2>
+        </Reveal>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {PERSONAS.map((p, i) => {
             const Icon = ICONS[p.icon] || Sparkles;
+            const scene = String(i + 1).padStart(2, "0");
             return (
-              <motion.div
-                key={p.title}
-                data-testid={`persona-card-${i}`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-                whileHover={{ y: -6 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0c0c0c] p-8 hover:border-[rgba(245,184,65,0.5)] transition-colors duration-300"
-              >
-                <div className="h-14 w-14 rounded-2xl bg-white/5 ring-1 ring-white/10 flex items-center justify-center text-gold group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                  <Icon size={26} />
-                </div>
-                <h3 className="font-display uppercase text-2xl mt-6 tracking-tight leading-tight">{p.title}</h3>
-                <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{p.desc}</p>
-              </motion.div>
+              <Reveal key={p.title} delay={(i % 3) * 0.08}>
+                <motion.div whileHover={{ y: -6 }} data-testid={`persona-card-${i}`}
+                            className="relative bg-[#0c0a07] border border-gold/15 rounded-md overflow-hidden group">
+                  <div className="relative h-44 overflow-hidden">
+                    <img src={p.img} alt={p.title} className="w-full h-full object-cover grayscale-[0.35] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0c0a07] via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 font-poster uppercase text-[11px] tracking-[0.2em] bg-gold text-[#050505] px-2.5 py-1">Scene {scene}</span>
+                  </div>
+                  <div className="relative p-6">
+                    <CornerBrackets color="rgba(245,184,65,0.35)" />
+                    <div className="flex items-center gap-3">
+                      <span className="h-10 w-10 rounded-lg bg-gold/10 ring-1 ring-gold/25 flex items-center justify-center text-gold"><Icon size={20} /></span>
+                      <h3 className="font-poster uppercase text-xl tracking-wide leading-tight">{p.title}</h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{p.desc}</p>
+                  </div>
+                </motion.div>
+              </Reveal>
             );
           })}
         </div>
+
+        <Reveal className="text-center mt-12" delay={0.1}>
+          <Cta href="#book" testid="who-cta">Book a Shoot</Cta>
+        </Reveal>
       </div>
     </section>
   );
