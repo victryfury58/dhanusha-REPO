@@ -19,6 +19,17 @@ export const ASSETS = {
   mic: "https://images.unsplash.com/photo-1679411156707-9e97efa60381?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwyfHxwb2RjYXN0JTIwbWljcm9waG9uZSUyMGRhcmslMjBjaW5lbWF0aWN8ZW58MHx8fHwxNzg1NDIxNDIwfDA&ixlib=rb-4.1.0&q=85",
 };
 
+// Designed YouTube thumbnails (portfolio showcase — all 16:9)
+export const THUMBNAILS = [
+  { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/ekiznxzx_98.png", tag: "Business" },
+  { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/qwj32ney_58.png", tag: "Education" },
+  { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/qrq0jz5e_16.png", tag: "Long-Form" },
+  { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/0doxtbsa_13.png", tag: "Podcast" },
+  { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/kycyzlv3_10.png", tag: "Interview" },
+  { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/gvpjgujm_8.png", tag: "Story" },
+  { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/pce60he6_7.webp", tag: "YouTube" },
+];
+
 // Uploaded reel / teaser videos
 export const REELS = [
   "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/ou49ja78_AQMF1nmO0Edl5vzGAzjqSiV0icq3ce1w3csJzPIfMlcM-evIGnOx5HlBu90wXf8melCbZ7RL23pFOnRM6T6y2VjZFxivFXMS.mp4",

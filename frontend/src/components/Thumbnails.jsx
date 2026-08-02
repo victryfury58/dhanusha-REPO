@@ -1,13 +1,8 @@
 import { motion } from "framer-motion";
-import { ASSETS } from "@/data";
+import { THUMBNAILS } from "@/data";
 import { SlateLabel, CornerBrackets, Reveal, UL } from "@/components/FilmKit";
 
-const THUMBS = [
-  { src: ASSETS.thumb1, tag: "Business" },
-  { src: ASSETS.thumb3, tag: "Spiritual" },
-  { src: ASSETS.thumb2, tag: "Education" },
-  { src: ASSETS.bts, tag: "On Set" },
-];
+const THUMBS = THUMBNAILS;
 
 export const Thumbnails = () => {
   return (
