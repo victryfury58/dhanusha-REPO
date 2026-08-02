@@ -1,128 +1,170 @@
 {
   "project_context": {
-    "agency_name": "Dhanusha Production",
-    "tagline": "Your Complete Content Creation Partner",
-    "contact": {
-      "email": "dhanusha.production@gmail.com",
-      "phone": "8287738890"
-    },
-    "vibe": "Dark cinematic, high-end, mysterious but user-friendly and trustworthy",
-    "theme": "dark"
+    "brand_name": "Dhanusha Production",
+    "theme_type": "dark",
+    "art_direction": "vintage film-production poster",
+    "core_goal": "Full visual overhaul maintaining existing functionality, tightly packed single-column flow, NO large empty scroll gaps. Emulate Devang Singh's poster style.",
+    "primary_cta": "Book a Shoot"
   },
   "typography": {
-    "strategy": "The 'Cinematic Blockbuster' Pairing",
-    "fonts_import": "@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap');",
-    "primary_heading": {
-      "family": "'Oswald', sans-serif",
-      "usage": "H1, H2, large numbers, and marquee text. Must be UPPERCASE.",
-      "weight": "700",
-      "tracking": "tracking-tighter",
-      "line_height": "leading-[0.9]"
+    "fonts": {
+      "headings": "Anton",
+      "body": "Manrope"
     },
-    "body_font": {
-      "family": "'Manrope', sans-serif",
-      "usage": "Paragraphs, buttons, small labels, UI elements.",
-      "weight": "400/500",
-      "tracking": "tracking-normal",
-      "line_height": "leading-relaxed"
+    "instructions": "Import Google Fonts Anton and Manrope. Use Anton for all headlines (H1, H2, H3), tags, and film slate labels in UPPERCASE. Use Manrope for body text, descriptions, and functional UI.",
+    "hierarchy": {
+      "H1": "text-5xl sm:text-6xl md:text-7xl font-['Anton'] uppercase tracking-wider leading-none",
+      "H2": "text-4xl sm:text-5xl font-['Anton'] uppercase tracking-wide leading-tight",
+      "H3": "text-2xl sm:text-3xl font-['Anton'] uppercase tracking-wide",
+      "labels": "text-xs sm:text-sm font-['Anton'] uppercase tracking-[0.2em]",
+      "body": "text-base sm:text-lg font-['Manrope'] leading-relaxed"
     }
   },
   "colors": {
-    "archetype": "LUXURY (Premium, Depth, Mystery) mixed with HIGH-CONTRAST",
-    "palette": {
-      "background_base": "#050505",
-      "background_surface": "#0F0F0F",
-      "primary_brand": "#F5B841",
-      "primary_glow": "rgba(245, 184, 65, 0.15)",
-      "text_primary": "#F5F5F5",
-      "text_secondary": "#A3A3A3",
-      "border_subtle": "rgba(255, 255, 255, 0.08)",
-      "border_active": "rgba(245, 184, 65, 0.5)"
+    "brand": {
+      "gold": "#F5B841",
+      "dark_base": "#050505",
+      "kraft_charcoal": "#17120C",
+      "white_text": "#FDFDFD"
     },
-    "tailwind_vars": {
-      "background": "0 0% 2%",
-      "foreground": "0 0% 96%",
-      "primary": "40 91% 61%",
-      "primary-foreground": "0 0% 10%",
-      "muted": "0 0% 10%",
-      "muted-foreground": "0 0% 64%",
-      "border": "0 0% 12%"
+    "mapping": {
+      "background_primary": "#050505",
+      "background_secondary": "#17120C",
+      "background_hero": "#F5B841",
+      "text_on_dark": "#FDFDFD",
+      "text_on_gold": "#050505",
+      "accent": "#F5B841",
+      "border": "#332A1D"
     }
   },
   "visual_enhancers": {
-    "noise_texture": "MANDATORY: Add a fixed, pointer-events-none div covering the viewport with a subtle SVG noise/grain background to give a filmic, cinematic quality.",
-    "glassmorphism": "Use for the sticky header and floating UI cards. `bg-black/50 backdrop-blur-xl border border-white/10`. NEVER use fully transparent headers.",
-    "spotlight_effect": "Use radial gradients in the background (e.g. `bg-[radial-gradient(circle_at_center,rgba(245,184,65,0.08)_0%,transparent_50%)]`) to spotlight key sections like the hero and forms.",
-    "borders": "Use 1px subtle white/10 borders for containers. For active/hover states, transition to the amber brand color."
-  },
-  "layouts_and_grids": {
-    "hero_section": "100vh Sticky/Fixed layout. The text must use a masked line-by-line reveal on load. As the user scrolls, use framer-motion `useScroll` and `useTransform` to scale and translate absolute-positioned images (camera lens, microphone, BTS photo) outward from the center, simulating a 3D unpacking sequence.",
-    "thumbnail_gallery": "Horizontal side-scrolling section. Use a wide flex container with `useScroll` mapped to a horizontal translation (`x`). Clip the frames aggressively.",
-    "podcast_teasers": "Render a sleek Phone Mockup frame. Inside it, put the teaser video. Implement a framer-motion `drag='x'` interaction to allow users to 'right swipe' through different podcast teasers.",
-    "services_grid": "Bento Grid Protocol: High-density asymmetric grid (e.g., `grid-cols-1 md:grid-cols-3 lg:grid-cols-4`). 13 services means varying spans. On hover, cards should slightly lift and their border should glow with the brand color.",
-    "manifesto_chapters": "Large typographic numbers (Oswald) overlapping the text. High contrast, massive negative space.",
-    "marquee": "Use `react-fast-marquee`. Font: Oswald, completely uppercase, hollow (text stroke) or solid amber. Very slow speed."
-  },
-  "motion": {
-    "libraries": [
-      "framer-motion",
-      "@studio-freight/react-lenis (MANDATORY for smooth scroll)",
-      "lucide-react (for icons)"
-    ],
-    "scroll_reveal": "Wrap major sections in motion.div elements with `initial={{ opacity: 0, y: 40 }}` and `whileInView={{ opacity: 1, y: 0 }}`. Use `viewport={{ once: true, margin: '-100px' }}`.",
-    "hover_states": "All buttons and interactive cards must scale up slightly (`scale: 1.02`) and brighten on hover."
-  },
-  "components": {
-    "lead_capture_form": "Use Shadcn UI Input, Textarea, Button. Override default styles to match cinematic theme: `bg-white/5`, `border-white/10`, focus states should use `ring-primary`. Layout: Split screen - massive typography on the left, sleek form on the right.",
-    "interactive_cards": "For the services. Custom HTML/Tailwind divs wrapped in framer-motion for the hover logic.",
-    "video_player": "For the teaser. Autoplay, muted, loop inside the phone mockup container."
-  },
-  "image_urls": {
-    "logo": {
-      "url": "https://customer-assets-jai6qajn.emergentagent.net/job_ddfc4267-4fe2-454f-a7f0-f95dbd4aa049/artifacts/tmkq3yhp_unnamed.jpg",
-      "usage": "Navbar and Footer brand identifier."
+    "film_strip_borders": {
+      "description": "Vertical film-strip sprocket holes running down the left/right edges of the main container.",
+      "implementation": "Create a wrapper component `FilmStripWrapper` that adds left and right columns (w-6 to w-8) with a repeating linear or radial gradient to mimic sprocket holes, or use a custom SVG background. For example: a dark column with repeating transparent rounded rectangles (using mask-image or radial gradients)."
     },
-    "thumbnail_1_h": {
-      "url": "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/ekiznxzx_98.png",
-      "usage": "Horizontal scrolling gallery."
+    "textures": {
+      "grain_overlay": "A fixed overlay across the entire site: `<div className=\"pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay\" style={{ backgroundImage: 'url(\"data:image/svg+xml,%3Csvg viewBox=0 0 200 200 xmlns=http://www.w3.org/2000/svg%3E%3Cfilter id=noiseFilter%3E%3CfeTurbulence type=fractalNoise baseFrequency=0.65 numOctaves=3 stitchTiles=stitch/%3E%3C/filter%3E%3Crect width=100%25 height=100%25 filter=url(%23noiseFilter)/%3E%3C/svg%3E\")' }}></div>`"
     },
-    "thumbnail_2_h": {
-      "url": "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/qwj32ney_58.png",
-      "usage": "Horizontal scrolling gallery."
+    "clapperboard_stripes": {
+      "description": "Diagonal striped pattern for the top bar of cards.",
+      "css_class": "bg-[repeating-linear-gradient(45deg,#050505,#050505_10px,#F5B841_10px,#F5B841_20px)]",
+      "usage": "Use as a top border element (h-4 or h-6) on 'Services' cards and the 'Info Slate'."
     },
-    "thumbnail_3_v": {
-      "url": "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/505varu7_2.png",
-      "usage": "Vertical asset for gallery or bento grid."
+    "marker_underlines": {
+      "description": "Hand-drawn highlighter/marker strokes behind key words.",
+      "implementation": "Wrap the highlighted word in a `<span className=\"relative inline-block\">`. Add an SVG path or a `::after` pseudo-element with `bg-[#F5B841] -z-10 rounded-sm transform -rotate-1` underneath the text."
     },
-    "teaser_video": {
-      "url": "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/g982fezv_AQMOuV83Rpo8XoI9AbFyBmKR8wXmlmPAWIo29cycOUwv57mVaamxdCwxHsfkdI4LyXncGbQqGnVjjKHmFquZqXqUjLt2c9fZ.mp4",
-      "usage": "Inside the swipeable phone mockup."
+    "tags_and_stickers": {
+      "description": "Rotated black or gold rounded rectangles used for stats, tags, or small labels.",
+      "css_classes": "inline-block bg-[#050505] text-[#F5B841] font-['Anton'] px-3 py-1 rounded-sm transform rotate-[-2deg] uppercase text-sm tracking-wider shadow-md border border-[#F5B841]/20"
     },
-    "bts_photo": {
-      "url": "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/73v152yv_728035463_18103608562992785_8445229392986515040_n.webp",
-      "usage": "Behind the scenes / Manifesto section or Hero unpacking parallax."
-    },
-    "cinematic_lens": {
-      "url": "https://images.unsplash.com/photo-1580852300513-9b50125bf293?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwzfHxjYW1lcmElMjBsZW5zJTIwZGFyayUyMGNpbmVtYXRpY3xlbnwwfHx8fDE3ODU0MjE0MjB8MA&ixlib=rb-4.1.0&q=85",
-      "usage": "Abstract floating asset for the 3D-feel Hero unpacking sequence."
-    },
-    "cinematic_mic": {
-      "url": "https://images.unsplash.com/photo-1679411156707-9e97efa60381?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwyfHxwb2RjYXN0JTIwbWljcm9waG9uZSUyMGRhcmslMjBjaW5lbWF0aWN8ZW58MHx8fHwxNzg1NDIxNDIwfDA&ixlib=rb-4.1.0&q=85",
-      "usage": "Abstract floating asset for the 3D-feel Hero unpacking sequence."
+    "corner_brackets": {
+      "description": "Small L-shaped brackets in the corners of sections/images.",
+      "implementation": "Absolute positioned divs in corners. Top-left: `border-l-2 border-t-2`, Bottom-right: `border-r-2 border-b-2` etc."
     }
   },
+  "components": {
+    "film_slate_label": {
+      "description": "Corner labels like 'TAKE 01', 'REEL 02'.",
+      "structure": "Absolute positioned at top-left/right of sections. `text-xs tracking-[0.2em] uppercase border border-[#F5B841]/30 px-2 py-1 bg-[#050505] text-[#F5B841]`."
+    },
+    "info_slate_card": {
+      "description": "Central slate card used in Hero (Location/Setup/Crew/Delivery).",
+      "structure": "Black background card, white/gold text, clapperboard striped top border. Rows divided by thin dotted lines."
+    },
+    "persona_card": {
+      "description": "Used in 'Who we help' section.",
+      "structure": "Image (grayscale or high contrast) with corner brackets. Orange corner label tag (e.g., 'SCENE 01'). Title below with marker underline + short description."
+    },
+    "service_clapper_card": {
+      "description": "Used for the 13 services.",
+      "structure": "Kraft/Charcoal (#17120C) background, Clapperboard striped top bar, Anton font title, short description, numbered 'TAKE 01', 'TAKE 02' etc."
+    },
+    "thumbnail_grid": {
+      "description": "Grid of vertical videos (Reels) with play buttons.",
+      "structure": "Tight grid (`gap-2` or `gap-4`). Images with a central circular play button (gold border, white fill, black triangle)."
+    },
+    "comparison_table": {
+      "description": "Before/After: Doing Everything Alone vs Doing What You're Best At.",
+      "structure": "Two columns, tight rows. Left column (red/dim text), Right column (gold text, checkmarks). Arrow icon pointing from left to right in the middle."
+    },
+    "cta_button": {
+      "description": "Repeated Book a Shoot button.",
+      "structure": "Pill-shaped (`rounded-full`), `bg-[#F5B841] text-[#050505] font-['Anton'] uppercase text-xl px-8 py-3 hover:scale-105 transition-transform duration-200 active:scale-95`."
+    }
+  },
+  "layouts": {
+    "flow": "Tightly packed single-column flow. Content centered in a max-w-4xl or max-w-5xl container to look like a long printed poster.",
+    "spacing": "Minimal large gaps. Use `py-12` or `py-16` max. Elements should feel dense and intentional.",
+    "sections": [
+      {
+        "id": "hero",
+        "background": "#F5B841",
+        "text_color": "#050505",
+        "content": "Grainy gold hero. 'TAKE 01', 'SCENE - INTRO'. Massive Anton headline. Info Slate card. CTA. Filmstrip border in black."
+      },
+      {
+        "id": "who_we_help",
+        "background": "#050505",
+        "text_color": "#FDFDFD",
+        "content": "'REEL 02', 'SCENE - CASTING'. Grid of Persona Cards. Filmstrip border in gold/transparent."
+      },
+      {
+        "id": "services",
+        "background": "#17120C",
+        "text_color": "#FDFDFD",
+        "content": "'TAKE 01 - 13', 'SCENE - THE SETUP'. Grid of Service Clapper Cards."
+      },
+      {
+        "id": "comparison",
+        "background": "#050505",
+        "text_color": "#FDFDFD",
+        "content": "Before/After table."
+      },
+      {
+        "id": "reel_wall",
+        "background": "#17120C",
+        "text_color": "#FDFDFD",
+        "content": "'FEATURED REEL'. Thumbnail Grid with play buttons."
+      },
+      {
+        "id": "testimonials_and_faq",
+        "background": "#050505",
+        "text_color": "#FDFDFD",
+        "content": "'DIRECTOR'S CHAIR' (brands/faces) and 'Q&A - BEHIND THE SCENES' (accordion)."
+      },
+      {
+        "id": "lead_form",
+        "background": "#F5B841",
+        "text_color": "#050505",
+        "content": "'LET'S ROLL' Tape tag. Lead form in a tight black slate card."
+      }
+    ]
+  },
+  "motion": {
+    "guidance": "Use `lenis` for smooth, heavy momentum scrolling to emulate reading a physical poster. Very subtle stagger entrance animations via Framer Motion, but NO large parallax or scroll gaps that break the dense layout."
+  },
+  "image_urls": {
+    "persona_cards": [
+      {
+        "category": "Podcast / Audio setup",
+        "url": "https://images.unsplash.com/photo-1589903308904-1010c2294adc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzZ8MHwxfHNlYXJjaHwyfHxwb2RjYXN0JTIwc3R1ZGlvJTIwbWljcm9waG9uZSUyMGRhcmslMjBzZXR1cHxlbnwwfHx8fDE3ODU2NjM1NDh8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Podcast microphone dark setup for 'Podcast Production' persona."
+      },
+      {
+        "category": "Video Editing / Post Production",
+        "url": "https://images.pexels.com/photos/29505140/pexels-photo-29505140.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Video editing timeline screen for 'YouTube & Reels Editing' persona."
+      },
+      {
+        "category": "Behind the Scenes / Crew",
+        "url": "https://images.unsplash.com/photo-1632187981988-40f3cbaeef5e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHwyfHxmaWxtJTIwcHJvZHVjdGlvbiUyMGNyZXclMjBiZWhpbmQlMjB0aGUlMjBzY2VuZXN8ZW58MHx8fHwxNzg1NjYzNTQ4fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Film production crew for 'Commercial Video Production' persona."
+      }
+    ]
+  },
   "accessibility": {
-    "contrast": "Ensure APCA contrast standards. Dark grey text on black is forbidden; use #A3A3A3 or lighter.",
-    "reduced_motion": "Use `useReducedMotion` from framer-motion to disable the 3D unpack sequence and scroll-jacking for users with vestibular disorders.",
-    "test_ids": "Every button, form input, and swipeable card MUST have a `data-testid` (e.g., `data-testid='hero-cta'`, `data-testid='contact-submit'`)."
+    "instructions": "Ensure contrast between gold text and black background is above 4.5:1. All interactive elements MUST have `data-testid` attributes. Form elements need explicit focus states (e.g., ring-gold)."
   },
-  "instructions_to_main_agent": {
-    "1": "BUILD .js FILES, NOT .tsx. Provide the exact CSS variables and custom classes.",
-    "2": "NO GENERIC SLOP. The design must look like a high-end film production agency. Spacing should be extremely generous (py-24, py-32).",
-    "3": "For the Hero '3D unpack' requirement: Since we don't have literal 3D models, you MUST simulate this by using layered absolute `motion.div`s containing the mic, lens, and BTS images. Map their `scale`, `y`, and `x` values to `useScroll` so they 'fly out' from the center as the user scrolls down, revealing the UI beneath.",
-    "4": "Never use a fully transparent header; use backdrop-blur-xl and bg-black/50.",
-    "5": "Do not leave placeholder links or text. Construct the 13 services logically: Outdoor Podcast Production, Multi-Camera Setup, Video Editing, etc.",
-    "6": "Use Radix/Shadcn primitives for form elements to ensure accessibility, but heavily style them with Tailwind to fit the cinematic theme."
-  },
-  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": "Avoid generic layouts and simplistic gradients. Create depth through layered design elements with z-index hierarchy. Use glass-morphism effects with backdrop filters. DO NOT apply universal transitions (e.g., `transition: all`). DO NOT center align the app container. Use sonner for toasts. Do not use AI emojis."
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": "1. Build with React + Tailwind. \n2. STRICTLY NO generic centered layouts or modern SaaS glassmorphism. This is a VINTAGE POSTER. \n3. Elements must be tightly packed. Avoid huge `py-32` padding; keep padding tight and fill it with visual markers like tags, brackets, and slate text. \n4. Implement the film-strip side borders properly using CSS gradients or SVG repeating patterns to frame the whole site. \n5. Ensure Google Fonts (Anton, Manrope) are loaded in the head or index.css. \n6. For the form, keep it clean but styled like a production call sheet."
 }
