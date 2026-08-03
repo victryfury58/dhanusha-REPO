@@ -23,9 +23,16 @@ const Line = ({ children, i }) => (
 export const Hero = () => {
   return (
     <section id="top" className="relative bg-[#050505] text-white overflow-hidden min-h-screen flex items-center pt-28 pb-16 md:pt-32 md:pb-20" data-testid="hero-section">
+      {/* Poster fallback layer (always fills, every device) */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${ASSETS.heroPoster})` }}
+        aria-hidden="true"
+      />
       {/* Animated video background */}
       <video
         src={ASSETS.heroVideo}
+        poster={ASSETS.heroPoster}
         autoPlay muted loop playsInline preload="auto"
         className="absolute inset-0 w-full h-full object-cover"
         data-testid="hero-video"

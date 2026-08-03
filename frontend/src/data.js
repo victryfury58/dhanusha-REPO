@@ -11,6 +11,7 @@ export const CONTACT = {
 export const ASSETS = {
   logo: "https://customer-assets-jai6qajn.emergentagent.net/job_ddfc4267-4fe2-454f-a7f0-f95dbd4aa049/artifacts/tmkq3yhp_unnamed.jpg",
   heroVideo: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/2yd917c4_Animate_image_for_website_hero_202608031824.mp4",
+  heroPoster: "/posters/hero.jpg",
   thumb1: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/ekiznxzx_98.png",
   thumb2: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/qwj32ney_58.png",
   thumb3: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/505varu7_2.png",
@@ -39,6 +40,46 @@ export const REELS = [
   "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/e7uz7dsd_AQNXoO7j5cr3moD7ZFKnr--lqCTVCEbVR5gIeQSibIXb262-0_igMBAzDvuH4Ktymone_Ol9L_sdzA4vsUBybnadD80Y_1Wv.mp4",
   "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/ivg94qrq_AQOlIBb2abv3vsk79QKw0xFxHocVQETQ-5SVqtUWFdIE1DaM1HptXL1V92MVu_Qh_lbMTROZV_9DR5Uo5Ae4PU-SjHbcGHap.mp4",
 ];
+
+// Categorised showreel — reels/shorts (9:16), event shoots (9:16), BTS (16:9)
+const ART = "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts";
+export const SHOWREEL = {
+  reels: {
+    label: "Reels & Shorts",
+    slate: "Reel 03",
+    scene: "Featured · Cuts",
+    aspect: "9/16",
+    items: [
+      { src: REELS[0], poster: "/posters/r1.jpg" },
+      { src: REELS[1], poster: "/posters/r2.jpg" },
+      { src: REELS[2], poster: "/posters/r3.jpg" },
+      { src: REELS[3], poster: "/posters/r4.jpg" },
+      { src: REELS[4], poster: "/posters/r5.jpg" },
+      { src: `${ART}/g982fezv_AQMOuV83Rpo8XoI9AbFyBmKR8wXmlmPAWIo29cycOUwv57mVaamxdCwxHsfkdI4LyXncGbQqGnVjjKHmFquZqXqUjLt2c9fZ.mp4`, poster: "/posters/teaser.jpg" },
+    ],
+  },
+  events: {
+    label: "Event & Outdoor Shoots",
+    slate: "Reel 04",
+    scene: "On Location",
+    aspect: "9/16",
+    items: [
+      { src: `${ART}/dhqgfa0n_CM%20Event%20Highlight%20Short%2013%20April%20Part%201.mp4`, poster: "/posters/ev_cm.jpg", title: "CM Event Highlight" },
+      { src: `${ART}/zfp98fub_Marathon%201st%20Short%2020%20April%202nd%20Draft.mp4`, poster: "/posters/ev_marathon.jpg", title: "Marathon Coverage" },
+      { src: `${ART}/fy6w529u_CRICKET.mp4`, poster: "/posters/ev_cricket.jpg", title: "Cricket Highlights" },
+    ],
+  },
+  bts: {
+    label: "Behind The Scenes",
+    slate: "Reel 05",
+    scene: "On Set",
+    aspect: "16/9",
+    items: [
+      { src: `${ART}/urfyplxs_20260123_140651.mp4`, poster: "/posters/bts1.jpg", title: "On Set — Take 1" },
+      { src: `${ART}/gzqqzp0w_20260204_130205.mp4`, poster: "/posters/bts2.jpg", title: "On Set — Take 2" },
+    ],
+  },
+};
 
 export const HERO_CHIPS = [
   { label: "Shoots across", value: "Delhi NCR" },
