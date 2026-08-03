@@ -4,7 +4,6 @@ import { Menu, X } from "lucide-react";
 import { ASSETS, CONTACT } from "@/data";
 
 const LINKS = [
-  { label: "Who We Help", href: "#who" },
   { label: "Reels", href: "#reels" },
   { label: "Clients", href: "#clients" },
   { label: "Services", href: "#services" },

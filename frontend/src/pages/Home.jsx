@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import CredMarquee from "@/components/Marquee";
-import Personas from "@/components/Personas";
 import ReelWall from "@/components/ReelWall";
 import Thumbnails from "@/components/Thumbnails";
 import YouTubeChannels from "@/components/YouTubeChannels";
@@ -24,7 +23,6 @@ export default function Home() {
       <main className="md:px-[22px]">
         <Hero />
         <CredMarquee />
-        <Personas />
         <ReelWall />
         <Thumbnails />
         <YouTubeChannels />
