@@ -10,6 +10,7 @@ export const CONTACT = {
 
 export const ASSETS = {
   logo: "https://customer-assets-jai6qajn.emergentagent.net/job_ddfc4267-4fe2-454f-a7f0-f95dbd4aa049/artifacts/tmkq3yhp_unnamed.jpg",
+  heroVideo: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/2yd917c4_Animate_image_for_website_hero_202608031824.mp4",
   thumb1: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/ekiznxzx_98.png",
   thumb2: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/qwj32ney_58.png",
   thumb3: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/505varu7_2.png",

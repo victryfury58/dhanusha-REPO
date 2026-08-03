@@ -1,24 +1,35 @@
-import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { Volume2, VolumeX } from "lucide-react";
 import { REELS, ASSETS } from "@/data";
-import { SlateLabel, PlayCircle, Reveal, HL } from "@/components/FilmKit";
+import { SlateLabel, Reveal, HL } from "@/components/FilmKit";
 
 const ALL = [...REELS, ASSETS.teaser];
 
 const Tile = ({ src, index }) => {
   const ref = useRef(null);
-  const [playing, setPlaying] = useState(false);
+  const videoRef = useRef(null);
+  const inView = useInView(ref, { margin: "-10% 0px -10% 0px" });
+  const [muted, setMuted] = useState(true);
 
-  const toggle = () => {
-    const v = ref.current;
+  useEffect(() => {
+    const v = videoRef.current;
     if (!v) return;
-    if (v.paused) { v.play(); setPlaying(true); } else { v.pause(); setPlaying(false); }
+    if (inView) { v.play().catch(() => {}); } else { v.pause(); }
+  }, [inView]);
+
+  const toggleSound = (e) => {
+    e.stopPropagation();
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+    if (!v.muted) v.play().catch(() => {});
   };
 
   return (
-    <motion.button
-      type="button"
-      onClick={toggle}
+    <motion.div
+      ref={ref}
       data-testid={`reel-${index}`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -26,18 +37,19 @@ const Tile = ({ src, index }) => {
       transition={{ duration: 0.45, delay: (index % 6) * 0.05 }}
       className="group relative aspect-[9/16] overflow-hidden rounded-md ring-1 ring-gold/20 bg-black"
     >
-      <video ref={ref} src={src} muted loop playsInline preload="metadata"
-             onMouseEnter={(e) => e.currentTarget.play()}
-             onMouseLeave={(e) => { if (!playing) e.currentTarget.pause(); }}
-             className="w-full h-full object-cover" />
-      <div className={`absolute inset-0 transition-opacity duration-300 ${playing ? "opacity-0" : "opacity-100"}`}>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="group-hover:scale-110 transition-transform"><PlayCircle size={52} /></span>
-        </div>
-        <span className="absolute bottom-3 left-3 font-poster uppercase text-[10px] tracking-[0.2em] text-white/80">Reel {String(index + 1).padStart(2, "0")}</span>
-      </div>
-    </motion.button>
+      <video ref={videoRef} src={`${src}#t=0.1`} muted loop playsInline preload="auto" className="w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10 pointer-events-none" />
+      <span className="absolute top-2 left-2 font-poster uppercase text-[10px] tracking-[0.2em] text-white/85">Reel {String(index + 1).padStart(2, "0")}</span>
+      <button
+        type="button"
+        onClick={toggleSound}
+        data-testid={`reel-sound-${index}`}
+        aria-label={muted ? "Unmute" : "Mute"}
+        className="absolute bottom-2 right-2 h-9 w-9 rounded-full bg-[#050505]/80 text-gold flex items-center justify-center ring-1 ring-gold/30 hover:bg-gold hover:text-[#050505] transition-colors"
+      >
+        {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+      </button>
+    </motion.div>
   );
 };
 
@@ -53,7 +65,7 @@ export const ReelWall = () => {
             Straight From <HL onGold>Our Shoots.</HL>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Tap any reel to play. This is the exact short-form style we deliver from every podcast we produce.
+            Short reels, BTS and outdoor shoots — playing live. Tap the speaker on any reel to hear it.
           </p>
         </Reveal>
 
