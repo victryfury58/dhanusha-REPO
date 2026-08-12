@@ -77,6 +77,10 @@ export const SHOWREEL = {
     items: [
       { src: `${ART}/urfyplxs_20260123_140651.mp4`, poster: "/posters/bts1.jpg", title: "On Set — Take 1" },
       { src: `${ART}/gzqqzp0w_20260204_130205.mp4`, poster: "/posters/bts2.jpg", title: "On Set — Take 2" },
+      { src: `${ART}/ks2erc88_20260607_201436.mp4`, poster: "/posters/bts3.jpg", title: "On Set — Take 3" },
+      { src: `${ART}/ou9ekmpr_20260620_141958.mp4`, poster: "/posters/bts4.jpg", title: "On Set — Take 4" },
+      { src: `${ART}/54bwrbyv_20260629_111023.mp4`, poster: "/posters/bts5.jpg", title: "On Set — Take 5" },
+      { src: `${ART}/f2q8wnuf_20260707_125946.mp4`, poster: "/posters/bts6.jpg", title: "On Set — Take 6" },
     ],
   },
 };
@@ -185,6 +189,15 @@ export const CHANNELS = [
 
 // Featured YouTube video (direct link provided)
 export const FEATURED_VIDEO_ID = "ZAqmEKc_7CA";
+
+// Featured episodes across client channels — playable embeds
+export const FEATURED_EPISODES = [
+  { id: "ZAqmEKc_7CA", channel: "Featured Episode" },
+  { id: "M1AenqIKtcw", channel: "Podcast with Anchal" },
+  { id: "81o1W-Tavi4", channel: "Abhishek Kar" },
+  { id: "u-tnWNEyazw", channel: "TED Shark Labs" },
+  { id: "H6Ght2wlsnA", channel: "Jitendra Vaswani" },
+];
 
 // Placeholder testimonials (editable, hidden by default via admin toggle)
 export const TESTIMONIALS = [
