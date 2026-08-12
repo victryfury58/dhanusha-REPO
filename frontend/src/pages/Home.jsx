@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import CredMarquee from "@/components/Marquee";
+import StudioIntro from "@/components/StudioIntro";
 import ReelWall from "@/components/ReelWall";
 import BtsPhotos from "@/components/BtsPhotos";
 import Thumbnails from "@/components/Thumbnails";
@@ -24,6 +25,7 @@ export default function Home() {
       <main className="md:px-[22px]">
         <Hero />
         <CredMarquee />
+        <StudioIntro />
         <ReelWall />
         <BtsPhotos />
         <Thumbnails />

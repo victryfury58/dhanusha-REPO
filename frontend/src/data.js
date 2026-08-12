@@ -88,7 +88,16 @@ export const BTS_PHOTOS = [
   "/bts/bts3.jpg",
   "/bts/bts4.jpg",
   "/bts/bts5.jpg",
+  "/bts/bts6.jpg",
+  "/bts/bts7.jpg",
+  "/bts/bts8.jpg",
 ];
+
+// Studio walk-through / introduction video (9:16 vertical)
+export const STUDIO_INTRO = {
+  src: `${ART}/2efvv372_VID_20260728_112300_858_bsl.mp4`,
+  poster: "/posters/studio_intro.jpg",
+};
 
 export const HERO_CHIPS = [
   { label: "Shoots across", value: "Delhi NCR" },
