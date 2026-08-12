@@ -23,6 +23,11 @@ export const ASSETS = {
 
 // Designed YouTube thumbnails (portfolio showcase — all 16:9)
 export const THUMBNAILS = [
+  { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/3koyzlji_91.png", tag: "Exclusive" },
+  { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/zyg94gs3_141.png", tag: "Travel" },
+  { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/5d1n1hg0_280.png", tag: "News" },
+  { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/jlohf5jo_278.png", tag: "Society" },
+  { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/zk4e6ebb_225.png", tag: "Spiritual" },
   { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/ekiznxzx_98.png", tag: "Business" },
   { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/qwj32ney_58.png", tag: "Education" },
   { src: "https://customer-assets-rejwkqb3.emergentagent.net/job_visual-create-40/artifacts/qrq0jz5e_16.png", tag: "Long-Form" },
