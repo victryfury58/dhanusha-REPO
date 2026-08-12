@@ -81,6 +81,15 @@ export const SHOWREEL = {
   },
 };
 
+// Behind-the-scenes photo wall (auto-oriented locally)
+export const BTS_PHOTOS = [
+  "/bts/bts1.jpg",
+  "/bts/bts2.jpg",
+  "/bts/bts3.jpg",
+  "/bts/bts4.jpg",
+  "/bts/bts5.jpg",
+];
+
 export const HERO_CHIPS = [
   { label: "Shoots across", value: "Delhi NCR" },
   { label: "Setup", value: "Multi-Camera" },

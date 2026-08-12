@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import CredMarquee from "@/components/Marquee";
 import ReelWall from "@/components/ReelWall";
+import BtsPhotos from "@/components/BtsPhotos";
 import Thumbnails from "@/components/Thumbnails";
 import YouTubeChannels from "@/components/YouTubeChannels";
 import Services from "@/components/Services";
@@ -24,6 +25,7 @@ export default function Home() {
         <Hero />
         <CredMarquee />
         <ReelWall />
+        <BtsPhotos />
         <Thumbnails />
         <YouTubeChannels />
         <Services />
