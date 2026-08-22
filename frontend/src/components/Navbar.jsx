@@ -52,6 +52,19 @@ export const Navbar = () => {
           Book a Shoot
         </a>
 
+        <a
+          href="https://wa.me/918287738890?text=Hi%20Dhanusha%20Production!%20I'd%20like%20to%20book%20a%20shoot.%20Please%20share%20your%20availability."
+          target="_blank"
+          rel="noopener noreferrer"
+          data-testid="navbar-whatsapp"
+          aria-label="Book on WhatsApp"
+          className="hidden md:inline-flex items-center justify-center ml-2 h-9 w-9 rounded-full bg-[#25D366] text-[#050505] hover:scale-[1.08] hover:shadow-[0_0_18px_rgba(37,211,102,0.55)] transition-all"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <path d="M20.52 3.48A11.86 11.86 0 0 0 12.02 0C5.44 0 .1 5.34.1 11.92c0 2.1.55 4.15 1.6 5.96L0 24l6.29-1.65a11.9 11.9 0 0 0 5.72 1.46h.01c6.58 0 11.92-5.34 11.92-11.92 0-3.18-1.24-6.17-3.42-8.41ZM12.02 21.3h-.01a9.36 9.36 0 0 1-4.77-1.31l-.34-.2-3.73.98 1-3.64-.22-.37a9.35 9.35 0 0 1-1.43-4.94c0-5.17 4.21-9.38 9.4-9.38 2.51 0 4.87.98 6.64 2.75a9.32 9.32 0 0 1 2.75 6.64c-.01 5.18-4.22 9.38-9.4 9.38Zm5.43-7.03c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01a1.1 1.1 0 0 0-.8.37c-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.63.71.23 1.36.19 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z"/>
+          </svg>
+        </a>
+
         <button className="md:hidden text-white" onClick={() => setOpen((v) => !v)} data-testid="navbar-menu-toggle" aria-label="Menu">
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
