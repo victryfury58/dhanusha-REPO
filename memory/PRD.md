@@ -43,3 +43,8 @@
 - New tightly-packed section flow (no scroll gaps): Hero(gold slate card) -> credibility marquee -> Personas SCENE cards -> Reel Wall video grid -> Thumbnails grid -> Client YouTube channels + featured embed -> 13 Services clapper cards -> What You Get -> Before/After Comparison table -> Testimonials(toggle) -> FAQ -> Book-a-Shoot form(gold call-sheet) -> Footer.
 - Lenis `anchors` enabled so navbar/CTA links smooth-scroll.
 - Tested 100% backend + frontend (iteration_2.json). Awaiting more user assets to expand reels/thumbnails/personas.
+
+## Update (2026-07 — WhatsApp CTA)
+- Added floating WhatsApp "Book on WhatsApp" button (bottom-right, brand green with vintage TAKE·01 tape sticker, pulse animation) linking to wa.me/918287738890 with a pre-filled booking message.
+- Component: /app/frontend/src/components/WhatsAppFloat.jsx, mounted from Home.jsx.
+- Verified live on preview: button visible, correct href, no console errors.
