@@ -69,6 +69,10 @@ export const SHOWREEL = {
     scene: "On Location",
     aspect: "9/16",
     items: [
+      { src: "/videos/superyou.mp4", poster: "/posters/events/superyou.jpg", title: "Superyou · Brand Reel" },
+      { src: "/videos/baby-feme-nest.mp4", poster: "/posters/events/baby-feme-nest.jpg", title: "Baby Feme Nest" },
+      { src: "/videos/coworkzen.mp4", poster: "/posters/events/coworkzen.jpg", title: "Coworkzen" },
+      { src: "/videos/event-draft-1.mp4", poster: "/posters/events/event-draft-1.jpg", title: "Event Highlight" },
       { src: `${ART}/dhqgfa0n_CM%20Event%20Highlight%20Short%2013%20April%20Part%201.mp4`, poster: "/posters/ev_cm.jpg", title: "CM Event Highlight" },
       { src: `${ART}/zfp98fub_Marathon%201st%20Short%2020%20April%202nd%20Draft.mp4`, poster: "/posters/ev_marathon.jpg", title: "Marathon Coverage" },
       { src: `${ART}/fy6w529u_CRICKET.mp4`, poster: "/posters/ev_cricket.jpg", title: "Cricket Highlights" },
