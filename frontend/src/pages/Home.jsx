@@ -14,6 +14,7 @@ import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import MobileActionBar from "@/components/MobileActionBar";
 
 export default function Home() {
   return (
@@ -40,6 +41,7 @@ export default function Home() {
       </main>
       <Footer />
       <WhatsAppFloat />
+      <MobileActionBar />
     </div>
   );
 }

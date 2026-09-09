@@ -21,7 +21,7 @@ export default function WhatsAppFloat() {
       transition={{ delay: 1.2, type: "spring", stiffness: 220, damping: 18 }}
       whileHover={{ scale: 1.06 }}
       whileTap={{ scale: 0.95 }}
-      className="fixed bottom-5 right-5 md:bottom-8 md:right-8 z-[80] group"
+      className="hidden md:flex fixed bottom-5 right-5 md:bottom-8 md:right-8 z-[80] group"
     >
       {/* Pulsing ring */}
       <span className="absolute inset-0 rounded-full bg-[#25D366]/60 animate-ping" aria-hidden="true" />

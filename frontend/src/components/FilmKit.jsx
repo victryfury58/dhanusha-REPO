@@ -66,7 +66,7 @@ export const Cta = ({ children = "Book a Shoot", href = "#book", onGold = false,
     data-testid={testid}
     whileHover={{ scale: 1.04 }}
     whileTap={{ scale: 0.97 }}
-    className={`relative inline-flex items-center gap-2 font-poster uppercase tracking-[0.12em] text-lg md:text-xl px-8 py-3.5 rounded-full transition-colors ${
+    className={`relative inline-flex items-center justify-center gap-2 font-poster uppercase tracking-[0.12em] text-base sm:text-lg md:text-xl px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-colors min-h-[48px] ${
       onGold ? "bg-[#050505] text-gold" : "bg-gold text-[#050505]"
     } ${className}`}
   >

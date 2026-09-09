@@ -33,12 +33,33 @@
     * {
         @apply border-border;
     }
+    html {
+        /* Prevent iOS text auto-inflation on landscape */
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
     body {
         @apply bg-background text-foreground;
         font-family: 'Manrope', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
+        /* Muted default tap-highlight so buttons feel native */
+        -webkit-tap-highlight-color: rgba(245, 184, 65, 0.15);
+    }
+    /* Make sure content doesn't hide behind the mobile bottom action bar */
+    @media (max-width: 767px) {
+        body {
+            padding-bottom: calc(72px + env(safe-area-inset-bottom));
+        }
+    }
+    /* Comfortable tap targets */
+    a, button {
+        touch-action: manipulation;
+    }
+    /* Prevent iOS auto-zoom on form focus (font-size must be >= 16px) */
+    input, select, textarea {
+        font-size: 16px;
     }
     ::selection {
         background: #050505;
