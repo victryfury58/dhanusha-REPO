@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import ServicesTabs from "@/components/ServicesTabs";
+import BottomCta from "@/components/BottomCta";
 import CredMarquee from "@/components/Marquee";
 import StudioIntro from "@/components/StudioIntro";
 import ReelWall from "@/components/ReelWall";
@@ -19,20 +21,26 @@ import MobileActionBar from "@/components/MobileActionBar";
 export default function Home() {
   return (
     <div className="relative">
-      {/* Film-strip poster frame */}
-      <div className="film-strip hidden md:block fixed left-0 top-0 bottom-0 w-[22px] z-[70] pointer-events-none" aria-hidden="true" />
-      <div className="film-strip hidden md:block fixed right-0 top-0 bottom-0 w-[22px] z-[70] pointer-events-none" aria-hidden="true" />
-
       <Navbar />
-      <main className="md:px-[22px]">
+      <main>
+        {/* New design — hero + 5-tab services block + supporting CTA */}
         <Hero />
+        <ServicesTabs />
+        <BottomCta />
+
+        {/* Anchor for "Clients" nav link */}
+        <div id="clients" />
         <CredMarquee />
+
+        {/* Existing rich sections kept below — reels, thumbnails, portfolio */}
         <StudioIntro />
         <ReelWall />
         <BtsPhotos />
         <Thumbnails />
         <YouTubeChannels />
-        <Services />
+
+        {/* Anchor for "About" nav link */}
+        <div id="about" />
         <Takeaways />
         <Comparison />
         <Testimonials />
