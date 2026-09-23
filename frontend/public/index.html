@@ -2,34 +2,47 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#c9a24b" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#FDFF0C" />
         <meta name="description" content="Dhanusha Production — Podcast, reels, thumbnails and outdoor multi-camera production studio serving Delhi NCR. Book a shoot on WhatsApp." />
         <meta name="keywords" content="Dhanusha Production, podcast production Delhi, reels editing, thumbnail design, multi-camera shoot, video production Delhi NCR, outdoor podcast studio, YouTube production" />
         <meta name="author" content="Dhanusha Production" />
         <meta name="robots" content="index, follow" />
 
+        <!-- Security hardening (client-side hints; real headers should come from the host) -->
+        <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+        <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()" />
+
         <!-- Canonical URL -->
         <link rel="canonical" href="https://dhanushaproduction.in/" />
 
-        <!-- Open Graph (Facebook, WhatsApp, LinkedIn preview) -->
+        <!-- Open Graph -->
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Dhanusha Production" />
         <meta property="og:title" content="Dhanusha Production — Podcast, Reels & Video Studio | Delhi NCR" />
         <meta property="og:description" content="Outdoor & multi-camera podcast production, editing, reels and thumbnails — we bring the entire studio to your location, anywhere in Delhi NCR." />
         <meta property="og:url" content="https://dhanushaproduction.in/" />
-        <meta property="og:image" content="https://dhanushaproduction.in/posters/hero.jpg" />
+        <meta property="og:image" content="https://dhanushaproduction.in/posters/hero-bts.jpg" />
         <meta property="og:locale" content="en_IN" />
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Dhanusha Production — Podcast, Reels & Video Studio | Delhi NCR" />
         <meta name="twitter:description" content="Outdoor & multi-camera podcast production, editing, reels and thumbnails across Delhi NCR." />
-        <meta name="twitter:image" content="https://dhanushaproduction.in/posters/hero.jpg" />
+        <meta name="twitter:image" content="https://dhanushaproduction.in/posters/hero-bts.jpg" />
 
+        <!-- Performance: preconnect + resource hints -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://i.ytimg.com" crossorigin />
+        <link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
+        <link rel="dns-prefetch" href="https://customer-assets-rejwkqb3.emergentagent.net" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+
+        <!-- Preload hero video poster so first paint is instant -->
+        <link rel="preload" as="image" href="/posters/hero-bts.jpg" fetchpriority="high" />
 
         <title>Dhanusha Production — Podcast, Reels & Video Studio | Delhi NCR</title>
 
@@ -131,13 +144,16 @@
                     }),
                     (e.__SV = 1));
             })(document, window.posthog || []);
+            // Session recording DISABLED — was causing lag / glitches
+            // by capturing every DOM mutation, click and scroll event.
             posthog.init("phc_DbsPb39SRc8z3EiQ6Dhj6ikv4H4rTKcht9d4sZSesceP", {
                 api_host: "https://ap.emergent.sh",
-                person_profiles: "identified_only", // or 'always' to create profiles for anonymous users as well,
-                session_recording: {
-                    recordCrossOriginIframes: true,
-                    capturePerformance: false,
-                },
+                person_profiles: "identified_only",
+                disable_session_recording: true,
+                capture_pageview: true,
+                capture_pageleave: false,
+                autocapture: false,
+                capture_performance: false,
             });
         </script>
     </body>

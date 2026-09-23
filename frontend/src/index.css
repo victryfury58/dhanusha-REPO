@@ -12,19 +12,19 @@
         --card-foreground: 0 0% 99%;
         --popover: 0 0% 6%;
         --popover-foreground: 0 0% 99%;
-        --primary: 40 91% 61%;
+        --primary: 61 100% 52%;
         --primary-foreground: 0 0% 3%;
-        --secondary: 36 30% 8%;
+        --secondary: 61 30% 8%;
         --secondary-foreground: 0 0% 99%;
-        --muted: 36 20% 10%;
-        --muted-foreground: 40 12% 66%;
-        --accent: 40 91% 61%;
+        --muted: 61 20% 10%;
+        --muted-foreground: 61 12% 66%;
+        --accent: 61 100% 52%;
         --accent-foreground: 0 0% 3%;
         --destructive: 0 72% 51%;
         --destructive-foreground: 0 0% 98%;
-        --border: 40 22% 16%;
-        --input: 40 22% 16%;
-        --ring: 40 91% 61%;
+        --border: 61 22% 16%;
+        --input: 61 22% 16%;
+        --ring: 61 100% 52%;
         --radius: 0.4rem;
     }
 }
@@ -37,6 +37,10 @@
         /* Prevent iOS text auto-inflation on landscape */
         -webkit-text-size-adjust: 100%;
         text-size-adjust: 100%;
+        /* Native smooth-scroll (replaces heavy Lenis JS) */
+        scroll-behavior: smooth;
+        /* Offset for the fixed navbar when jumping to #anchor */
+        scroll-padding-top: 72px;
     }
     body {
         @apply bg-background text-foreground;
@@ -45,7 +49,7 @@
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
         /* Muted default tap-highlight so buttons feel native */
-        -webkit-tap-highlight-color: rgba(245, 184, 65, 0.15);
+        -webkit-tap-highlight-color: rgba(253, 255, 12, 0.18);
     }
     /* Make sure content doesn't hide behind the mobile bottom action bar */
     @media (max-width: 767px) {
@@ -63,7 +67,7 @@
     }
     ::selection {
         background: #050505;
-        color: #F5B841;
+        color: #FDFF0C;
     }
 }
 
@@ -73,8 +77,8 @@
         font-weight: 400;
         letter-spacing: 0.01em;
     }
-    .text-gold { color: #F5B841; }
-    .bg-gold { background-color: #F5B841; }
+    .text-gold { color: #FDFF0C; }
+    .bg-gold { background-color: #FDFF0C; }
 
     /* Film grain overlay */
     .grain-overlay {
@@ -97,7 +101,7 @@
 
     /* Clapperboard diagonal stripe bar */
     .clapper-stripe {
-        background-image: repeating-linear-gradient(-45deg, #050505 0, #050505 11px, #F5B841 11px, #F5B841 22px);
+        background-image: repeating-linear-gradient(-45deg, #050505 0, #050505 11px, #FDFF0C 11px, #FDFF0C 22px);
     }
 
     /* Marker highlight behind a word */
@@ -111,7 +115,7 @@
         content: "";
         position: absolute;
         inset: 12% -0.05em;
-        background: #F5B841;
+        background: #FDFF0C;
         transform: rotate(-1.2deg);
         border-radius: 3px;
         z-index: -1;
@@ -130,7 +134,7 @@
         right: -2%;
         bottom: -0.14em;
         height: 0.16em;
-        background: #F5B841;
+        background: #FDFF0C;
         border-radius: 40% 60% 55% 45% / 100% 100% 100% 100%;
         transform: rotate(-0.6deg);
     }
@@ -139,14 +143,14 @@
     .sticker {
         display: inline-block;
         background: #050505;
-        color: #F5B841;
-        border: 1px solid rgba(245, 184, 65, 0.35);
+        color: #FDFF0C;
+        border: 1px solid rgba(253, 255, 12, 0.35);
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
     }
 
     .kraft {
-        background-color: #17120C;
-        background-image: radial-gradient(rgba(245, 184, 65, 0.035) 1px, transparent 1px);
+        background-color: #12130C;
+        background-image: radial-gradient(rgba(253, 255, 12, 0.04) 1px, transparent 1px);
         background-size: 22px 22px;
     }
 }
@@ -155,7 +159,61 @@
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+/* Simple, GPU-friendly hero fade-in (replaces heavier framer motion staggers) */
+@keyframes hero-fade-in {
+    from { opacity: 0; transform: translate3d(0, 12px, 0); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.hero-content-fade {
+    animation: hero-fade-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: opacity, transform;
+}
+
+/* GPU-friendly panel reveal (replaces framer-motion AnimatePresence on tabs) */
+@keyframes panel-fade-in {
+    from { opacity: 0; transform: translate3d(0, -6px, 0); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.panel-fade-in {
+    animation: panel-fade-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Content-visibility hint speeds up long pages on mobile.
+   Browsers skip layout/paint for off-screen elements. Huge scroll win. */
+.cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 300px 400px;
+}
+
+/* Kill expensive backdrop-blur on small screens — biggest scroll-jank source */
+@media (max-width: 767px) {
+    .backdrop-blur-md,
+    .backdrop-blur-sm,
+    .backdrop-blur-lg,
+    .backdrop-blur {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
+
+/* Navbar slide-in on load — replaces framer motion */
+@keyframes navbar-slide-in {
+    from { opacity: 0; transform: translate3d(0, -12px, 0); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.navbar-slide-in {
+    animation: navbar-slide-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero-content-fade { animation: none; }
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
 ::-webkit-scrollbar { width: 9px; }
 ::-webkit-scrollbar-track { background: #0b0b0b; }
 ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #F5B841; }
+::-webkit-scrollbar-thumb:hover { background: #FDFF0C; }

@@ -1,7 +1,5 @@
 import { ArrowUpRight, Leaf } from "lucide-react";
-
-const WHATSAPP_HREF =
-  "https://wa.me/918287738890?text=Hi%20Dhanusha%20Production!%20I'd%20like%20to%20book%20a%20shoot.%20Please%20share%20your%20availability.";
+import { BOTTOM_CTA } from "@/content";
 
 const WhatsAppIcon = ({ size = 16 }) => (
   <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden="true">
@@ -10,8 +8,9 @@ const WhatsAppIcon = ({ size = 16 }) => (
 );
 
 export const BottomCta = () => {
+  const taglineParts = BOTTOM_CTA.tagline.split("/").map((s) => s.trim());
   return (
-    <section className="bg-[#050505] py-8 md:py-10" data-testid="bottom-cta">
+    <section id="book" className="bg-[#050505] py-8 md:py-12" data-testid="bottom-cta">
       <div className="max-w-6xl mx-auto px-4 sm:px-5 md:px-8">
         <div className="rounded-2xl bg-gradient-to-r from-[#0e0b07] to-[#120c05] border border-gold/20 p-5 md:p-6 lg:p-7 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
           <div className="flex items-start md:items-center gap-3 md:gap-4 flex-1 min-w-0">
@@ -20,32 +19,37 @@ export const BottomCta = () => {
             </span>
             <div className="min-w-0">
               <p className="font-poster uppercase text-white text-lg sm:text-xl md:text-2xl leading-tight">
-                Let's Create Something Amazing Together
+                {BOTTOM_CTA.title}
               </p>
               <p className="font-poster uppercase tracking-[0.2em] text-[10px] sm:text-[11px] text-gold/70 mt-1">
-                Video <span className="text-gold/50">/</span> Design{" "}
-                <span className="text-gold/50">/</span> Digital{" "}
-                <span className="text-gold/50">/</span> Growth
+                {taglineParts.map((part, i) => (
+                  <span key={i}>
+                    {part}
+                    {i < taglineParts.length - 1 && (
+                      <span className="text-gold/50 px-1.5">/</span>
+                    )}
+                  </span>
+                ))}
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-3 md:gap-4 shrink-0">
             <a
-              href={WHATSAPP_HREF}
+              href={BOTTOM_CTA.bookHref}
               target="_blank"
               rel="noopener noreferrer"
               data-testid="bottom-cta-book"
               className="inline-flex items-center gap-2 bg-[#25D366] text-[#050505] font-poster uppercase tracking-[0.1em] text-[12px] sm:text-[13px] px-4 sm:px-5 py-2.5 sm:py-3 rounded-full active:scale-95 hover:brightness-110 transition-all"
             >
               <WhatsAppIcon size={15} />
-              Book a Shoot
+              {BOTTOM_CTA.bookLabel}
             </a>
             <a
-              href="#book"
+              href={BOTTOM_CTA.infoHref}
               className="hidden sm:inline-flex items-center gap-1.5 font-poster uppercase tracking-[0.12em] text-[12px] sm:text-[13px] text-white/80 hover:text-gold transition-colors"
             >
-              More Information <ArrowUpRight size={14} />
+              {BOTTOM_CTA.infoLabel} <ArrowUpRight size={14} />
             </a>
           </div>
         </div>
