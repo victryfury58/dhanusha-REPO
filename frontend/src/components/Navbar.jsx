@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { ASSETS } from "@/data";
 import { NAV, FOOTER } from "@/content";
@@ -13,6 +13,7 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
+  // Scroll listener — rAF throttled
   useEffect(() => {
     let ticking = false;
     const update = () => {
@@ -25,122 +26,161 @@ export const Navbar = () => {
         ticking = true;
       }
     };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock body scroll + close on Escape when menu is open
+  useEffect(() => {
+    if (!open) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const closeMenu = useCallback(() => setOpen(false), []);
+
+  // The nav bar has a SOLID dark background whenever the menu is open,
+  // regardless of scroll position — this fixes the transparency-over-hero glitch.
+  const navBgClass =
+    open || scrolled
+      ? "bg-[#050505] border-b border-white/10 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.6)]"
+      : "bg-transparent";
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-[90] transition-colors duration-300 navbar-slide-in ${
-        scrolled ? "bg-[#050505]/95 backdrop-blur-md border-b border-white/5" : "bg-transparent"
-      }`}
-      data-testid="navbar"
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-5 md:px-8 h-[62px] md:h-[72px] flex items-center justify-between gap-3">
-        {/* Logo (unchanged from data.js) */}
-        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0" data-testid="navbar-logo">
-          <img
-            src={ASSETS.logo}
-            alt="Dhanusha Production"
-            className="h-8 w-8 sm:h-10 sm:w-10 rounded object-cover ring-1 ring-gold/30 shrink-0"
-          />
-          <span className="font-poster uppercase leading-none text-[13px] sm:text-[15px] tracking-wide">
-            Dhanusha
-            <br />
-            <span className="text-gold text-[9px] sm:text-[10px] tracking-[0.3em] sm:tracking-[0.35em]">
-              PRODUCTION
-            </span>
-          </span>
-        </a>
+    <>
+      {/* Full-screen dark scrim behind the drawer — kills any bleed-through */}
+      <div
+        onClick={closeMenu}
+        aria-hidden="true"
+        className={`lg:hidden fixed inset-0 z-[85] bg-[#050505]/85 transition-opacity duration-300 ${
+          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      />
 
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
-          {NAV.links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              data-testid={`nav-${l.label.toLowerCase()}`}
-              className="relative font-poster uppercase text-[13px] tracking-[0.15em] text-white/80 hover:text-gold transition-colors py-2 group"
-            >
-              {l.label}
-              <span className="absolute left-0 right-0 -bottom-0.5 h-0.5 bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
-            </a>
-          ))}
-        </nav>
-
-        {/* Right-side actions */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
-          {/* Highlighted WhatsApp Book-a-Shoot pill with pulsing ring (old website style) */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-[90] transition-colors duration-200 navbar-slide-in ${navBgClass}`}
+        data-testid="navbar"
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-5 md:px-8 h-[62px] md:h-[72px] flex items-center justify-between gap-3">
+          {/* Logo */}
           <a
-            href={NAV.bookHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="navbar-book-shoot"
-            className="relative inline-flex items-center gap-2 bg-[#25D366] text-[#050505] font-poster uppercase tracking-[0.1em] text-[11px] sm:text-[13px] px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full active:scale-95 hover:brightness-110 transition-all shadow-[0_6px_22px_-4px_rgba(37,211,102,0.75)]"
+            href="#top"
+            onClick={closeMenu}
+            className="flex items-center gap-2 sm:gap-3 min-w-0"
+            data-testid="navbar-logo"
           >
-            {/* Pulsing highlight ring */}
-            <span
-              className="absolute inset-0 rounded-full bg-[#25D366]/70 animate-ping pointer-events-none"
-              aria-hidden="true"
+            <img
+              src={ASSETS.logo}
+              alt="Dhanusha Production"
+              className="h-8 w-8 sm:h-10 sm:w-10 rounded object-cover ring-1 ring-gold/30 shrink-0"
             />
-            {/* Content stays above the ring */}
-            <span className="relative flex items-center gap-2">
-              <WhatsAppIcon size={16} />
-              <span>{NAV.bookLabel}</span>
+            <span className="font-poster uppercase leading-none text-[13px] sm:text-[15px] tracking-wide">
+              Dhanusha
+              <br />
+              <span className="text-gold text-[9px] sm:text-[10px] tracking-[0.3em] sm:tracking-[0.35em]">
+                PRODUCTION
+              </span>
             </span>
           </a>
 
-          <button
-            className="lg:hidden text-white h-10 w-10 flex items-center justify-center -mr-1"
-            onClick={() => setOpen((v) => !v)}
-            data-testid="navbar-menu-toggle"
-            aria-label="Menu"
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </div>
+          {/* Desktop nav */}
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
+            {NAV.links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                data-testid={`nav-${l.label.toLowerCase()}`}
+                className="relative font-poster uppercase text-[13px] tracking-[0.15em] text-white/80 hover:text-gold transition-colors py-2 group"
+              >
+                {l.label}
+                <span className="absolute left-0 right-0 -bottom-0.5 h-0.5 bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
+              </a>
+            ))}
+          </nav>
 
-      {/* Mobile menu drawer — CSS transition instead of framer-motion */}
-      <div
-        className={`lg:hidden bg-[#050505]/98 backdrop-blur-md overflow-hidden border-t border-white/5 transition-[max-height,opacity] duration-300 ease-out ${
-          open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-        }`}
-        data-testid="mobile-menu"
-        aria-hidden={!open}
-      >
-        <div className="px-5 py-5 flex flex-col divide-y divide-white/5">
-          {NAV.links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="font-poster uppercase tracking-[0.15em] text-white/85 hover:text-gold py-3.5 text-[15px]"
-            >
-              {l.label}
-            </a>
-          ))}
-          <div className="pt-4 grid grid-cols-2 gap-2.5">
-            <a
-              href={`tel:${FOOTER.phone}`}
-              onClick={() => setOpen(false)}
-              className="font-poster uppercase tracking-[0.1em] text-[12px] border border-gold/40 text-gold rounded-full py-3 flex items-center justify-center gap-2 active:scale-95 transition-transform"
-            >
-              <Phone size={14} /> Call
-            </a>
+          {/* Right-side actions */}
+          <div className="flex items-center gap-2 sm:gap-2.5">
             <a
               href={NAV.bookHref}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="font-poster uppercase tracking-[0.1em] text-[12px] bg-[#25D366] text-[#050505] rounded-full py-3 flex items-center justify-center gap-2 active:scale-95 transition-transform"
+              data-testid="navbar-book-shoot"
+              className="relative inline-flex items-center gap-2 bg-[#25D366] text-[#050505] font-poster uppercase tracking-[0.1em] text-[11px] sm:text-[13px] px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full active:scale-95 hover:brightness-110 transition-all shadow-[0_6px_22px_-4px_rgba(37,211,102,0.75)]"
             >
-              <MessageCircle size={14} /> WhatsApp
+              <span
+                className="absolute inset-0 rounded-full bg-[#25D366]/70 animate-ping pointer-events-none"
+                aria-hidden="true"
+              />
+              <span className="relative flex items-center gap-2">
+                <WhatsAppIcon size={16} />
+                <span>{NAV.bookLabel}</span>
+              </span>
             </a>
+
+            <button
+              type="button"
+              className="lg:hidden text-white h-10 w-10 flex items-center justify-center -mr-1 active:scale-90 transition-transform"
+              onClick={() => setOpen((v) => !v)}
+              data-testid="navbar-menu-toggle"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
         </div>
-      </div>
-    </header>
+
+        {/* Mobile drawer — solid black, sits INSIDE the header so it's always
+            above the hero video, no transparency issues */}
+        <div
+          className={`lg:hidden overflow-hidden bg-[#050505] border-t border-white/10 transition-[max-height,opacity] duration-300 ease-out ${
+            open ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+          data-testid="mobile-menu"
+          aria-hidden={!open}
+        >
+          <div className="px-5 py-4 flex flex-col divide-y divide-white/5">
+            {NAV.links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={closeMenu}
+                className="font-poster uppercase tracking-[0.15em] text-white/90 hover:text-gold py-3.5 text-[15px] active:text-gold"
+              >
+                {l.label}
+              </a>
+            ))}
+            <div className="pt-4 grid grid-cols-2 gap-2.5">
+              <a
+                href={`tel:${FOOTER.phone}`}
+                onClick={closeMenu}
+                className="font-poster uppercase tracking-[0.1em] text-[12px] border border-gold/40 text-gold rounded-full py-3 flex items-center justify-center gap-2 active:scale-95 transition-transform"
+              >
+                <Phone size={14} /> Call
+              </a>
+              <a
+                href={NAV.bookHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+                className="font-poster uppercase tracking-[0.1em] text-[12px] bg-[#25D366] text-[#050505] rounded-full py-3 flex items-center justify-center gap-2 active:scale-95 transition-transform"
+              >
+                <MessageCircle size={14} /> WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
 

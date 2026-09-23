@@ -19,7 +19,7 @@ export const Hero = () => {
     const section = sectionRef.current;
     if (!video || !section) return;
 
-    // Pause when hero is scrolled off-screen; play when back in view.
+    // Play/pause driven by visibility.
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -34,25 +34,27 @@ export const Hero = () => {
     );
     io.observe(section);
 
-    // Pause when user switches tabs (saves battery / stops decode work).
-    const onVis = () => {
-      if (document.hidden) video.pause();
-      else if (isSectionInView()) video.play().catch(() => {});
-    };
     const isSectionInView = () => {
       const rect = section.getBoundingClientRect();
       return rect.bottom > 0 && rect.top < window.innerHeight;
     };
+    const onVis = () => {
+      if (document.hidden) video.pause();
+      else if (isSectionInView()) video.play().catch(() => {});
+    };
     document.addEventListener("visibilitychange", onVis);
 
-    // Kick playback + poster-fade after first frame ready
-    const onCanPlay = () => setVideoReady(true);
-    video.addEventListener("canplay", onCanPlay);
+    // Wait for actual first frame (loadeddata) before fading the poster.
+    // canplay fires too early on some browsers and causes a black flash.
+    const onLoadedData = () => setVideoReady(true);
+    video.addEventListener("loadeddata", onLoadedData);
+    // Safety net if event was missed (cached video, etc.)
+    if (video.readyState >= 2) setVideoReady(true);
 
     return () => {
       io.disconnect();
       document.removeEventListener("visibilitychange", onVis);
-      video.removeEventListener("canplay", onCanPlay);
+      video.removeEventListener("loadeddata", onLoadedData);
     };
   }, []);
 
