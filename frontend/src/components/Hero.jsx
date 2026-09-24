@@ -2,17 +2,40 @@ import { useEffect, useRef, useState } from "react";
 import { MapPin, ExternalLink } from "lucide-react";
 import { HERO } from "@/content";
 
+// Detect mobile ONCE at module load. Used to serve the 720p @ 900kbps
+// mobile hero video instead of the 1080p @ 1.8Mbps desktop version.
+const isMobileDevice =
+  typeof window !== "undefined" &&
+  (window.matchMedia?.("(max-width: 767px)")?.matches ||
+    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || ""));
+
 /**
  * Hero — BTS video looping background, high-contrast type overlay.
- * Performance: uses Page Visibility API + IntersectionObserver to pause the
- * background video when tab is hidden or hero is scrolled off-screen,
- * dropping CPU + battery use. No framer-motion here (removed for smoothness).
+ * Performance:
+ *  - Serves 1.8MB mobile-optimized video on phones (vs 3.5MB on desktop)
+ *  - IntersectionObserver + visibility API pause video when hidden/scrolled off
+ *  - Waits for real first frame before fading the poster (no black flash)
+ *  - Respects prefers-reduced-motion + save-data: shows poster only, no video
  */
 export const Hero = () => {
   const tagParts = HERO.tag.split("/").map((s) => s.trim());
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
   const [videoReady, setVideoReady] = useState(false);
+  const [shouldPlayVideo, setShouldPlayVideo] = useState(true);
+
+  // Honor Save-Data + reduced-motion — skip video entirely, poster only.
+  useEffect(() => {
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const saveData = !!(conn && conn.saveData);
+    const slowNet = conn && (conn.effectiveType === "2g" || conn.effectiveType === "slow-2g");
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (saveData || slowNet || reducedMotion) {
+      setShouldPlayVideo(false);
+    }
+  }, []);
+
+  const heroVideoSrc = isMobileDevice ? "/videos/hero-bts-mobile.mp4" : HERO.video;
 
   useEffect(() => {
     const video = videoRef.current;
@@ -74,19 +97,22 @@ export const Hero = () => {
         aria-hidden="true"
       />
 
-      {/* Looping BTS video — no autoPlay attr (we drive it via IO for smoothness) */}
-      <video
-        ref={videoRef}
-        src={HERO.video}
-        poster={HERO.poster}
-        muted
-        loop
-        playsInline
-        preload="auto"
-        disablePictureInPicture
-        className="absolute inset-0 w-full h-full object-cover"
-        data-testid="hero-bts-video"
-      />
+      {/* Looping BTS video — mobile version is 1.8MB (vs 3.5MB desktop).
+          Skipped entirely on save-data / slow / reduced-motion — poster only. */}
+      {shouldPlayVideo && (
+        <video
+          ref={videoRef}
+          src={heroVideoSrc}
+          poster={HERO.poster}
+          muted
+          loop
+          playsInline
+          preload={isMobileDevice ? "metadata" : "auto"}
+          disablePictureInPicture
+          className="absolute inset-0 w-full h-full object-cover"
+          data-testid="hero-bts-video"
+        />
+      )}
 
       {/* Cinematic overlay — keeps BTS visible, text readable */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/85 via-[#050505]/45 to-[#050505]/25 md:from-[#050505]/80 md:via-[#050505]/40 md:to-transparent" />

@@ -185,14 +185,31 @@
     contain-intrinsic-size: 300px 400px;
 }
 
-/* Kill expensive backdrop-blur on small screens — biggest scroll-jank source */
+/* MOBILE PERFORMANCE OVERRIDES — cut expensive effects on phones */
 @media (max-width: 767px) {
+    /* Backdrop-blur is the #1 scroll-jank source on mobile */
     .backdrop-blur-md,
     .backdrop-blur-sm,
     .backdrop-blur-lg,
     .backdrop-blur {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
+    }
+    /* Ping animations continuously repaint — kill on mobile */
+    .animate-ping {
+        animation: none !important;
+    }
+    /* Big shadows force compositor work — flatten */
+    .shadow-2xl,
+    .shadow-xl {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+    }
+    /* Disable hover effects (they're always-on when touched on mobile) */
+    .group:hover .group-hover\:scale-100,
+    .group:hover .group-hover\:scale-\[1\.03\],
+    .group:hover .group-hover\:scale-\[1\.05\],
+    .group:hover .group-hover\:scale-110 {
+        transform: none !important;
     }
 }
 

@@ -20,10 +20,14 @@ const ICONS = { Clapperboard, Camera, Mic, Users, TrendingUp };
 
 // ─────────────────────────────────────────────────────────────
 //  GLOBAL VIDEO PLAYBACK CONTROLLER
-//  Only the top N most-visible videos play at any time. This is
-//  the single biggest smoothness win on phones.
+//  On mobile only 1 video can play at a time; desktop allows 2.
+//  This is the single biggest smoothness win on phones.
 // ─────────────────────────────────────────────────────────────
-const MAX_CONCURRENT_VIDEOS = 2;
+const isMobile =
+  typeof window !== "undefined" &&
+  (window.matchMedia?.("(max-width: 767px)")?.matches ||
+    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || ""));
+const MAX_CONCURRENT_VIDEOS = isMobile ? 1 : 2;
 const registeredVideos = new Map(); // videoEl -> { visibleRatio, wrapper }
 let scheduleHandle = null;
 
@@ -299,6 +303,36 @@ const BtsPhoto = memo(function BtsPhoto({ src }) {
 });
 
 // ─────────────────────────────────────────────────────────────
+//  Client logo tile — circular white pill with subtle glow on tap/hover
+// ─────────────────────────────────────────────────────────────
+const LogoTile = memo(function LogoTile({ logo }) {
+  return (
+    <div
+      className="group relative flex items-center justify-center aspect-square rounded-full bg-white ring-1 ring-white/10 hover:ring-gold/50 transition-all p-2 sm:p-3 cv-auto"
+      title={logo.name}
+    >
+      {/* Yellow glow on hover — kept subtle, GPU-cheap */}
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{ boxShadow: "0 0 30px -6px rgba(253, 255, 12, 0.45)" }}
+      />
+      <img
+        src={logo.src}
+        alt={logo.name}
+        loading="lazy"
+        decoding="async"
+        className="relative w-full h-full object-contain scale-90 group-hover:scale-100 transition-transform duration-300"
+      />
+      {/* Tooltip label — appears below on hover, hidden on mobile to save space */}
+      <span className="hidden md:block absolute -bottom-7 left-1/2 -translate-x-1/2 font-poster uppercase text-[9.5px] tracking-[0.12em] text-white/70 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+        {logo.name}
+      </span>
+    </div>
+  );
+});
+
+// ─────────────────────────────────────────────────────────────
 //  Tab pill button
 // ─────────────────────────────────────────────────────────────
 const TabButton = memo(function TabButton({ item, active, onClick }) {
@@ -527,6 +561,21 @@ const SectionPanel = memo(function SectionPanel({ item, onClose }) {
                   <ThumbTile key={t.src} item={t} />
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* Client brand logos wall */}
+          {item.logos && item.logos.length > 0 && (
+            <div>
+              {item.logosHeading && <SectionHeading>{item.logosHeading}</SectionHeading>}
+              <div className="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-3 sm:gap-4 md:gap-5">
+                {item.logos.map((logo) => (
+                  <LogoTile key={logo.src} logo={logo} />
+                ))}
+              </div>
+              <p className="mt-6 md:mt-8 text-center font-poster uppercase tracking-[0.18em] text-[10.5px] text-white/45">
+                & many more brands / channels / creators
+              </p>
             </div>
           )}
 

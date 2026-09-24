@@ -208,6 +208,29 @@ export const TABS = [
       { value: "13", label: "Services Under One Roof" },
     ],
 
+    // Client brand logos wall (interactive: hover/tap = glow)
+    logosHeading: "Brands & Businesses We've Worked With",
+    logos: [
+      { name: "Gaur Yamuna City", src: "/clients/gaur-yamuna-city.png" },
+      { name: "Gaurs", src: "/clients/gaurs.png" },
+      { name: "Bharat Ki Soch", src: "/clients/bharat-ki-soch.png" },
+      { name: "Brain Infinity", src: "/clients/brain-infinity.png" },
+      { name: "VVIP", src: "/clients/vvip.png" },
+      { name: "NorthWind Sanctuary", src: "/clients/northwind-sanctuary.png" },
+      { name: "CoWorkZen", src: "/clients/coworkzen.png" },
+      { name: "Femme Nest", src: "/clients/femme-nest.png" },
+      { name: "TKBS · The Rajdhesh Show", src: "/clients/tkbs.png" },
+      { name: "Hierank Business School", src: "/clients/hierank.png" },
+      { name: "Prayaag Hospital", src: "/clients/prayaag-hospital.png" },
+      { name: "Smart Infovision", src: "/clients/smart-infovision.png" },
+      { name: "Lloyd Business School", src: "/clients/lloyd-business-school.png" },
+      { name: "Orange Advisors", src: "/clients/orange-advisors.png" },
+      { name: "Param Amrit", src: "/clients/param-amrit.png" },
+      { name: "Red Hot Media House", src: "/clients/red-hot-media.png" },
+      { name: "Hastakshep", src: "/clients/hastakshep.png" },
+      { name: "Zee Delhi NCR Haryana", src: "/clients/zee-delhi-ncr.png" },
+    ],
+
     channelsHeading: "Client YouTube Channels",
     channels: [
       { name: "Podcast With Anchal", handle: "@podcastwithanchal", url: "https://youtube.com/@podcastwithanchal" },
